@@ -1,0 +1,57 @@
+# =============================================================================
+# .vscodeignore — fichiers exclus du paquet .vsix produit par vsce package
+# Syntaxe = glob, similaire à .gitignore.
+# =============================================================================
+
+# --- Contrôle de version ----------------------------------------------------
+.git/**
+.gitignore
+.gitattributes
+
+# --- Environnement de dev VSCode --------------------------------------------
+.vscode/**
+.vscode-test/**
+
+# --- Node / npm -------------------------------------------------------------
+node_modules/**
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# --- Sorties de build (le .vsix lui-même est dans build/) -------------------
+build/**
+dist/**
+*.vsix
+
+# --- OS ---------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# --- Fichiers d'édition / scratch -------------------------------------------
+*.log
+*.typ.bak
+scratch/**
+
+# --- CI / CD ----------------------------------------------------------------
+.github/**
+.gitlab-ci.yml
+azure-pipelines.yml
+
+# --- Configs de dev (linters, formatters, TS) -------------------------------
+.eslintrc*
+.eslintignore
+.prettierrc*
+.prettierignore
+.editorconfig
+tsconfig.json
+jsconfig.json
+
+# --- Fichiers de tests éventuels --------------------------------------------
+test/**
+tests/**
+**/*.test.js
+**/*.spec.js
+
+# --- Ce fichier lui-même ----------------------------------------------------
+.vscodeignore

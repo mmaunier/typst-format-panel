@@ -1,0 +1,163 @@
+{
+  "name": "typst-format-panel",
+  "displayName": "Typst Format Panel",
+  "description": "Interactive side panel for Typst editing in VSCode: text formatting, math symbols, tables, grids and a fully customizable custom tab. English and French UI.",
+  "icon": "media/icon.png",
+  "version": "0.1.4",
+  "publisher": "mmaunier",
+  "author": {
+    "name": "Mikaël Maunier",
+    "email": "mmaunier2009@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmaunier/typst-format-panel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mmaunier/typst-format-panel/issues"
+  },
+  "homepage": "https://github.com/mmaunier/typst-format-panel#readme",
+  "keywords": [
+    "typst",
+    "typst-lsp",
+    "tinymist",
+    "formatting",
+    "math",
+    "sidebar",
+    "webview",
+    "i18n",
+    "french"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:typst"
+  ],
+  "main": "./src/extension.js",
+  "scripts": {
+    "vscode:prepublish": "echo 'No compilation needed'",
+    "package": "vsce package --out build/",
+    "build": "vsce package --out build/"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.32.0"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Typst Format Panel",
+      "properties": {
+        "typstFormatPanel.language": {
+          "type": "string",
+          "enum": ["auto", "en", "fr"],
+          "default": "auto",
+          "description": "Interface language for the side panel. 'auto' follows VSCode's display language and falls back to English if unsupported.",
+          "markdownDescription": "Interface language for the side panel.\n\n- `auto` — follow VSCode's `env.language` (defaults to English if unsupported).\n- `en` — force English.\n- `fr` — force French.\n\nAdditional languages can be added by dropping a `<lang>.json` file in the extension's `src/i18n/` directory."
+        },
+        "typstFormatPanel.persoButtons": {
+          "type": "array",
+          "default": [
+            {
+              "type": "titre",
+              "texte": "Mes commandes"
+            },
+            {
+              "type": "bouton",
+              "texte": "Titre §",
+              "commande": "= $1$0"
+            },
+            {
+              "type": "bouton_variantes",
+              "defaut": 1,
+              "variantes": [
+                {
+                  "texte": "Cadre simple",
+                  "commande": "#block(stroke: 1pt, inset: 8pt, radius: 4pt)[$1]$0"
+                },
+                {
+                  "texte": "Cadre coloré",
+                  "commande": "#block(fill: luma(230), inset: 8pt, radius: 4pt)[$1]$0"
+                }
+              ]
+            }
+          ],
+          "description": "Custom buttons for the Perso tab.",
+          "markdownDescription": "Custom buttons for the Perso tab.\n\n**Available types:**\n\n1. **Type `titre`** — section title\n   ```json\n   {\"type\": \"titre\", \"texte\": \"My title\"}\n   ```\n\n2. **Type `bouton`** — simple button\n   ```json\n   {\"type\": \"bouton\", \"texte\": \"Section\", \"commande\": \"= $1$0\"}\n   ```\n\n3. **Type `bouton_variantes`** — button with a right-click context menu\n   ```json\n   {\n     \"type\": \"bouton_variantes\",\n     \"defaut\": 1,\n     \"variantes\": [\n       {\"texte\": \"Bold stars\", \"commande\": \"*$1*$0\"},\n       {\"texte\": \"Bold function\", \"commande\": \"#strong[$1]$0\"}\n     ]\n   }\n   ```\n\n**Placeholders:** `$1` = selected text, `$0` = final cursor position, `\\n` = newline.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["titre", "bouton", "bouton_variantes"]
+              },
+              "texte": { "type": "string" },
+              "commande": { "type": "string" },
+              "defaut": { "type": "integer", "minimum": 1 },
+              "variantes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "texte": { "type": "string" },
+                    "commande": { "type": "string" }
+                  },
+                  "required": ["texte", "commande"]
+                }
+              }
+            },
+            "required": ["type"]
+          }
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "typst-format-container",
+          "title": "Typst Format",
+          "icon": "media/icon.svg",
+          "when": "typst-format-panel:enabled"
+        }
+      ]
+    },
+    "views": {
+      "typst-format-container": [
+        {
+          "icon": "media/icon.svg",
+          "id": "typstFormatPanel",
+          "name": "Typst Format",
+          "type": "webview",
+          "when": "typst-format-panel:enabled"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "typstFormat.commentTypst",
+        "title": "Typst: Comment selection",
+        "category": "Typst Format"
+      },
+      {
+        "command": "typstFormat.uncommentTypst",
+        "title": "Typst: Uncomment selection",
+        "category": "Typst Format"
+      },
+      {
+        "command": "typstFormat.hidePanel",
+        "title": "Typst: Hide the side panel",
+        "category": "Typst Format"
+      },
+      {
+        "command": "typstFormat.editPersoButtons",
+        "title": "Typst: Edit custom buttons",
+        "category": "Typst Format"
+      }
+    ]
+  }
+}

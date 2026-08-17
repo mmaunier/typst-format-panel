@@ -1,0 +1,171 @@
+<div id="format-tab" class="tab-content active">
+
+  <!-- ========== Texte ========== -->
+  <h3>{{t.section.text}}</h3>
+  <div class="button-group">
+    <button class="format-button bold" onclick="sendCommand('bold')"
+      oncontextmenu="showContextMenu(event, 'bold'); return false;">{{t.button.bold}}</button>
+    <button class="format-button italic" onclick="sendCommand('italic')"
+      oncontextmenu="showContextMenu(event, 'italic'); return false;">{{t.button.italic}}</button>
+    <button class="format-button underline" onclick="sendCommand('underline')">{{t.button.underline}}</button>
+  </div>
+  <div class="button-group">
+    <button class="format-button" onclick="sendCommand('strike')">{{t.button.strike}}</button>
+    <button class="format-button" onclick="sendCommand('highlight')">{{t.button.highlight}}</button>
+    <button class="format-button" onclick="sendCommand('code')"
+      oncontextmenu="showContextMenu(event, 'code'); return false;">{{t.button.code}}</button>
+  </div>
+  <div class="button-group">
+    <button class="format-button" onclick="sendCommand('smallcaps')">{{t.button.smallcaps}}</button>
+    <button class="format-button" onclick="sendCommand('cal')">{{t.button.cal}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Transformations ========== -->
+  <h3>{{t.section.transform}}</h3>
+  <div class="button-group">
+    <button class="transform-button uppercase" onclick="sendCommand('uppercase')">{{t.button.uppercase}}</button>
+    <button class="transform-button lowercase" onclick="sendCommand('lowercase')">{{t.button.lowercase}}</button>
+    <button class="transform-button capitalize" onclick="sendCommand('capitalize')">{{t.button.capitalize}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Couleurs et tailles ========== -->
+  <h3>{{t.section.color_size}}</h3>
+  <div class="button-group">
+    <button class="format-button" onclick="sendCommand('color')"
+      oncontextmenu="showContextMenu(event, 'color'); return false;">{{t.button.color}}</button>
+    <button class="format-button" onclick="sendCommand('fontsize')"
+      oncontextmenu="showContextMenu(event, 'fontsize'); return false;">{{t.button.fontsize}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Titres ========== -->
+  <h3>{{t.section.titles}}</h3>
+  <div class="button-group">
+    <button class="format-button" onclick="sendCommand('heading1')"
+      oncontextmenu="showContextMenu(event, 'heading1'); return false;">{{t.button.h1}}</button>
+    <button class="format-button" onclick="sendCommand('heading2')">{{t.button.h2}}</button>
+    <button class="format-button" onclick="sendCommand('heading3')">{{t.button.h3}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Alignement ========== -->
+  <h3>{{t.section.align}}</h3>
+  <div class="button-group">
+    <button class="align-button" onclick="sendCommand('flushleft')">
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
+        <rect x="1" y="1" width="10" height="1"/><rect x="1" y="3.5" width="12" height="1"/>
+        <rect x="1" y="6" width="8" height="1"/><rect x="1" y="8.5" width="11" height="1"/>
+      </svg>
+    </button>
+    <button class="align-button" onclick="sendCommand('center')">
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
+        <rect x="3" y="1" width="10" height="1"/><rect x="2" y="3.5" width="12" height="1"/>
+        <rect x="4" y="6" width="8" height="1"/><rect x="2.5" y="8.5" width="11" height="1"/>
+      </svg>
+    </button>
+    <button class="align-button" onclick="sendCommand('flushright')">
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
+        <rect x="5" y="1" width="10" height="1"/><rect x="3" y="3.5" width="12" height="1"/>
+        <rect x="7" y="6" width="8" height="1"/><rect x="4" y="8.5" width="11" height="1"/>
+      </svg>
+    </button>
+  </div>
+
+  <h3>{{t.section.spacing}}</h3>
+  <div class="button-group">
+    <button class="format-button secondary" onclick="sendCommand('hspace')"
+      oncontextmenu="showContextMenu(event, 'hspace'); return false;">{{t.button.hspace}}</button>
+    <button class="format-button secondary" onclick="sendCommand('vspace')"
+      oncontextmenu="showContextMenu(event, 'vspace'); return false;">{{t.button.vspace}}</button>
+    <button class="format-button secondary" onclick="sendCommand('newpage')">{{t.button.pagebreak}}</button>
+  </div>
+  <div class="button-group partial">
+    <button class="format-button" onclick="sendCommand('hline')"
+      oncontextmenu="showContextMenu(event, 'hline'); return false;">{{t.button.hline}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Réglages fins ========== -->
+  <h3>{{t.section.fine}}</h3>
+  <div class="button-group">
+    <button class="format-button secondary" onclick="sendCommand('set_par')"
+      oncontextmenu="showContextMenu(event, 'set_par'); return false;">{{t.button.set_par}}</button>
+    <button class="format-button secondary" onclick="sendCommand('set_list')"
+      oncontextmenu="showContextMenu(event, 'set_list'); return false;">{{t.button.set_list}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Listes ========== -->
+  <h3>{{t.section.lists}}</h3>
+  <div class="button-group">
+    <button class="format-button environment-secondary" onclick="sendCommand('itemize')"
+      oncontextmenu="showContextMenu(event, 'itemize'); return false;">{{t.button.itemize}}</button>
+    <button class="format-button environment-secondary" onclick="sendCommand('enumerate')"
+      oncontextmenu="showContextMenu(event, 'enumerate'); return false;">{{t.button.enumerate}}</button>
+    <button class="format-button environment-secondary" onclick="sendCommand('item')">{{t.button.item}}</button>
+  </div>
+  <div class="button-group partial">
+    <button class="format-button environment" onclick="sendCommand('tasks')"
+      oncontextmenu="showContextMenu(event, 'tasks'); return false;">{{t.button.tasks}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Blocs ========== -->
+  <h3>{{t.section.blocks}}</h3>
+  <div class="button-group">
+    <button class="format-button environment" onclick="sendCommand('block')"
+      oncontextmenu="showContextMenu(event, 'block'); return false;">{{t.button.block}}</button>
+    <button class="format-button environment" onclick="sendCommand('box')"
+      oncontextmenu="showContextMenu(event, 'box'); return false;">{{t.button.box}}</button>
+    <button class="format-button environment" onclick="sendCommand('quote')">{{t.button.quote}}</button>
+  </div>
+  <div class="button-group">
+    <button class="format-button environment-secondary" onclick="sendCommand('figure')">{{t.button.figure}}</button>
+    <button class="format-button environment-secondary" onclick="sendCommand('includegraphics')">{{t.button.image}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Notes et références ========== -->
+  <h3>{{t.section.refs}}</h3>
+  <div class="button-group">
+    <button class="format-button" onclick="sendCommand('footnote')">{{t.button.footnote}}</button>
+    <button class="format-button" onclick="sendCommand('label')">{{t.button.label}}</button>
+    <button class="format-button" onclick="sendCommand('ref')">{{t.button.ref}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Grid / Tableaux ========== -->
+  <h3>{{t.section.grid_tables}}</h3>
+  <div class="button-group">
+    <button class="format-button environment" onclick="sendCommand('grid2')">{{t.button.grid2}}</button>
+    <button class="format-button environment" onclick="sendCommand('grid3')">{{t.button.grid3}}</button>
+    <button class="format-button environment" onclick="sendCommand('typst_grid')"
+      oncontextmenu="showGridModal(event); return false;">{{t.button.grid_modal}}</button>
+  </div>
+  <div class="button-group">
+    <button class="format-button environment-secondary" onclick="sendCommand('table22')">{{t.button.table22}}</button>
+    <button class="format-button environment-secondary" onclick="sendCommand('table33')">{{t.button.table33}}</button>
+    <button class="format-button environment-secondary" onclick="sendCommand('typst_table')"
+      oncontextmenu="showTblrModal(event); return false;">{{t.button.table_modal}}</button>
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- ========== Spécial ========== -->
+  <h3>{{t.section.special}}</h3>
+  <div class="button-group">
+    <button class="format-button environment" onclick="sendCommand('comment')">{{t.button.comment}}</button>
+    <button class="format-button environment" onclick="sendCommand('uncomment')">{{t.button.uncomment}}</button>
+  </div>
+</div>

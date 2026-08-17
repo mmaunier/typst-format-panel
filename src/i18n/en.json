@@ -1,0 +1,458 @@
+{
+  "tab": {
+    "formats": "🎨 Formats",
+    "math": "📐 Math",
+    "perso": "✨ Custom"
+  },
+
+  "section": {
+    "text": "Text",
+    "transform": "Transformations",
+    "color_size": "Colors and sizes",
+    "titles": "Titles",
+    "align": "Alignment",
+    "spacing": "Spacing",
+    "fine": "Fine settings",
+    "lists": "Lists",
+    "blocks": "Blocks",
+    "refs": "Notes and references",
+    "grid_tables": "Grid / Tables",
+    "special": "Special",
+    "math_ops": "Operators",
+    "math_frac": "Fractions and roots",
+    "math_compare": "Comparisons and arrows",
+    "math_arrows_other": "Other arrows",
+    "math_funcs": "Functions",
+    "math_delim": "Delimiters and matrices",
+    "math_sets": "Sets",
+    "math_logic": "Logic and symbols",
+    "math_dec": "Decorations",
+    "math_env": "Math environments"
+  },
+
+  "button": {
+    "bold": "Bold",
+    "italic": "Italic",
+    "underline": "Underline",
+    "strike": "Strike",
+    "highlight": "Highlight",
+    "code": "Code",
+    "smallcaps": "Sᴍᴀʟʟ Cᴀᴘꜱ",
+    "cal": "𝒞𝒶𝓁",
+    "uppercase": "ABC",
+    "lowercase": "abc",
+    "capitalize": "Abc",
+    "color": "🎨 Color",
+    "fontsize": "🔠 Size",
+    "h1": "= H1",
+    "h2": "== H2",
+    "h3": "=== H3",
+    "hspace": "↔ hspace",
+    "vspace": "↕ vspace",
+    "pagebreak": "pagebreak",
+    "hline": "— #line —",
+    "set_par": "#set par(…)",
+    "set_list": "#set list(…)",
+    "itemize": "- List",
+    "enumerate": "+ List",
+    "item": "Item",
+    "tasks": "#tasks (taskize)",
+    "block": "block",
+    "box": "box",
+    "quote": "quote",
+    "figure": "figure",
+    "image": "image",
+    "footnote": "footnote",
+    "label": "<label>",
+    "ref": "@ref",
+    "grid2": "#grid 2col",
+    "grid3": "#grid 3col",
+    "grid_modal": "#grid …",
+    "table22": "#table 2×2",
+    "table33": "#table 3×3",
+    "table_modal": "#table …",
+    "comment": "Comment",
+    "uncomment": "Uncomment",
+    "arrows_special": "⇝ other arrows",
+    "math_spaces": "⎵ math spaces",
+    "matrix": "mat",
+    "array": "array",
+    "inline_math": "$…$",
+    "display_math": "$ … $",
+    "display": "display()",
+    "align_math": "= & align",
+    "cases": "cases"
+  },
+
+  "menu": {
+    "variants_suffix": " — Variants"
+  },
+
+  "modal": {
+    "cancel": "Cancel",
+    "create": "Create",
+
+    "table": {
+      "title": "Table assistant",
+      "rows": "Number of rows:",
+      "cols": "Number of columns:",
+      "style": "Stroke style:",
+      "style_grid": "Full grid",
+      "style_hlines": "Horizontal lines",
+      "style_vlines": "Vertical lines",
+      "style_simple": "No borders",
+      "headerRowBold": "First row bold:",
+      "headerRowFilled": "First row filled:",
+      "headerColBold": "First column bold:",
+      "headerColFilled": "First column filled:",
+      "removeFirstCell": "Blank top-left cell without borders:",
+      "alternateColors": "Alternate body colors:"
+    },
+
+    "grid": {
+      "title": "Grid assistant",
+      "cols": "Number of columns:",
+      "rows": "Number of rows (empty cells to generate):",
+      "widths_label": "Column widths:",
+      "widths_equal": "Equal (1fr each)",
+      "widths_auto": "Auto",
+      "widths_custom": "Custom",
+      "custom_placeholder": "Custom specification:",
+      "custom_hint": "e.g. 1fr, 2fr, auto",
+      "rowGutter": "Vertical gutter (row-gutter, em):",
+      "colGutter": "Horizontal gutter (column-gutter, em):",
+      "align": "Default alignment:",
+      "align_left": "Left",
+      "align_center": "Center",
+      "align_right": "Right"
+    },
+
+    "matrix": {
+      "title": "Matrix assistant",
+      "dimensions": "Dimensions:",
+      "size_custom": "Custom",
+      "custom_rows": "Rows:",
+      "custom_cols": "Columns:",
+      "type": "Delimiter:",
+      "type_pmatrix": "Parentheses ( )",
+      "type_bmatrix": "Brackets [ ]",
+      "type_vmatrix": "Bars | |",
+      "type_Vmatrix": "Double bars ‖ ‖",
+      "type_Bmatrix": "Braces { }",
+      "type_plain": "No delimiter"
+    }
+  },
+
+  "variant": {
+    "bold": {
+      "stars": "Markdown shortcut (default)",
+      "strong": "Typst function"
+    },
+    "italic": {
+      "under": "Markdown shortcut (default)",
+      "emph": "Typst function"
+    },
+    "underline": { "underline": "Underline" },
+    "strike": { "strike": "Strikethrough" },
+    "highlight": { "highlight": "Yellow highlight" },
+    "smallcaps": { "sc": "Small capitals" },
+    "cal": { "cal": "Calligraphy — auto wrap in $…$ in text mode" },
+
+    "code": {
+      "inline": "Inline code",
+      "text": "Plain text block",
+      "python": "Python block",
+      "casio": "Casio block",
+      "ti": "TI block"
+    },
+
+    "uppercase": { "upper": "Convert to uppercase" },
+    "lowercase": { "lower": "Convert to lowercase" },
+    "capitalize": { "cap": "Capitalize each word" },
+
+    "color": {
+      "red": "#text(fill: red)[…]",
+      "blue": "#text(fill: blue)[…]",
+      "green": "#text(fill: green)[…]",
+      "orange": "#text(fill: orange)[…]",
+      "gray": "#text(fill: gray)[…]"
+    },
+    "fontsize": {
+      "p8": "Very small",
+      "p10": "Small",
+      "p12": "Normal (default)",
+      "p14": "Slightly larger",
+      "p18": "Large"
+    },
+
+    "heading1": {
+      "eq": "Level 1 heading",
+      "fn": "Function form"
+    },
+    "heading2": { "eq": "Level 2 heading" },
+    "heading3": { "eq": "Level 3 heading" },
+
+    "flushleft":  { "align": "Left alignment" },
+    "center":     { "align": "Center" },
+    "flushright": { "align": "Right alignment" },
+
+    "hspace": {
+      "h": "Parametric horizontal space",
+      "quad": "Thin space (1em)",
+      "qquad": "Wide space (2em)",
+      "hfill": "Fill available space"
+    },
+    "vspace": {
+      "v": "Parametric vertical space",
+      "smallskip": "Small space (smallskip)",
+      "medskip": "Medium space (medskip)",
+      "bigskip": "Big space (bigskip)",
+      "vfill": "Fill vertically (vfill)"
+    },
+    "newpage": { "pb": "Page break" },
+    "hline": {
+      "p1": "Solid 1pt rule, full width (default)",
+      "p05": "Solid 0.5pt rule",
+      "d1": "Dashed 1pt rule",
+      "d05": "Dashed 0.5pt rule",
+      "red": "Red 1pt rule",
+      "blue": "Blue 1pt rule",
+      "gray": "Gray 0.5pt rule (discreet)"
+    },
+
+    "set_par": {
+      "leading": "Line spacing (leading)",
+      "spacing": "Paragraph spacing",
+      "indent": "First-line indent",
+      "justify": "Justified text"
+    },
+    "set_list": {
+      "spacing": "Space between items",
+      "indent": "Indent before marker",
+      "body-indent": "Indent after marker",
+      "tight": "Compact"
+    },
+
+    "itemize": {
+      "dash": "Standard bullet list (markdown)",
+      "bullet": "Filled round marker",
+      "tri": "Triangle marker",
+      "star": "Star marker",
+      "wedge": "Chevron marker"
+    },
+    "enumerate": {
+      "plus": "Standard \"1.\" numbering",
+      "hier": "Hierarchical (digits.letters.romans)",
+      "paren": "Parenthesized numbers",
+      "bracket": "Bracketed numbers",
+      "circled": "UTF-8 circles (black on white, up to 20)",
+      "circled-inv": "UTF-8 circles (white on black, up to 10)"
+    },
+    "item": { "dash": "Bullet" },
+
+    "tasks": {
+      "tasks2": "2 columns (default label \"a)\")",
+      "tasks3": "3 columns",
+      "tasks4": "4 columns",
+      "num":    "Numbered \"1)\"",
+      "paren":  "Parenthesized \"(1)\"",
+      "auto":   "auto-fit columns",
+      "import": "Place at the top of the document"
+    },
+
+    "block": {
+      "plain":   "Simple block",
+      "framed":  "Framed",
+      "colored": "Colored"
+    },
+    "box": {
+      "plain":  "Simple inline box",
+      "width":  "Fixed width",
+      "framed": "Inline frame"
+    },
+    "quote": { "q": "Blockquote" },
+    "figure": { "img": "Figure with image" },
+    "includegraphics": { "img": "Insert an image" },
+
+    "footnote": { "fn": "Footnote" },
+    "label": { "lbl": "Label" },
+    "ref": { "r": "Reference to a label" },
+
+    "grid2": { "g2": "Layout: 2 equal columns" },
+    "grid3": { "g3": "Layout: 3 equal columns" },
+    "typst_grid": { "modal": "Open the grid assistant" },
+    "table22": { "t22": "Quick 2×2 table" },
+    "table33": { "t33": "Quick 3×3 table" },
+    "typst_table": { "modal": "Open the table assistant" },
+
+    "frac": {
+      "slash": "Short fraction",
+      "fn":    "frac function"
+    },
+    "sqrt": {
+      "sqrt": "Square root",
+      "root": "n-th root"
+    },
+
+    "int": {
+      "plain":  "Integral",
+      "def":    "Definite integral a to b",
+      "double": "Double integral",
+      "cont":   "Contour integral"
+    },
+
+    "rightarrow": {
+      "std":      "Standard arrow",
+      "long":     "Long arrow",
+      "long-bar": "Long arrow with bar"
+    },
+    "leftarrow": {
+      "std":  "Standard arrow",
+      "long": "Long arrow"
+    },
+    "Rightarrow": {
+      "std":  "Standard double arrow",
+      "long": "Long double arrow"
+    },
+    "Leftarrow": {
+      "std":  "Left double arrow",
+      "long": "Long left double arrow"
+    },
+    "Leftrightarrow": {
+      "std":  "Bidirectional double arrow",
+      "long": "Long bidirectional double arrow"
+    },
+    "mapsto": {
+      "std":  "Standard mapsto",
+      "long": "Long mapsto"
+    },
+
+    "arrows_special": {
+      "squig":  "Squiggly arrow",
+      "hook-r": "Hook right",
+      "hook-l": "Hook left",
+      "tail":   "Tail arrow",
+      "tr":     "Diagonal top-right",
+      "br":     "Diagonal bottom-right",
+      "tl":     "Diagonal top-left",
+      "bl":     "Diagonal bottom-left",
+      "wave-r": "Wave arrow"
+    },
+
+    "math_spaces": {
+      "quad":  "Standard space",
+      "wide":  "Wide space",
+      "thick": "Thick space",
+      "med":   "Medium space",
+      "thin":  "Thin space"
+    },
+
+    "in":   { "notin": "Not in" },
+    "dots": {
+      "plain": "Horizontal ellipsis",
+      "cdots": "Centered horizontal ellipsis",
+      "vdots": "Vertical ellipsis"
+    },
+    "vec": {
+      "plain": "Arrow above (vector)",
+      "over":  "Bar above"
+    },
+
+    "inline_math":  { "plain": "Inline math" },
+    "display_math": { "plain": "Display math (with surrounding spaces)" },
+    "display":      { "plain": "Force display style" },
+
+    "matrix": {
+      "pmatrix": "Parentheses matrix",
+      "bmatrix": "Bracket matrix",
+      "vmatrix": "Bar matrix",
+      "Vmatrix": "Double-bar matrix",
+      "Bmatrix": "Brace matrix",
+      "plain":   "No delimiter",
+      "custom":  "Matrix assistant…"
+    },
+
+    "align_math": { "plain": "Aligned math block (uses & and \\ inside $ … $)" }
+  },
+
+  "label": {
+    "color": {
+      "red": "Red",
+      "blue": "Blue",
+      "green": "Green",
+      "orange": "Orange",
+      "gray": "Gray"
+    },
+    "uppercase": { "upper": "UPPERCASE" },
+    "lowercase": { "lower": "lowercase" },
+    "capitalize": { "cap": "First Letters" },
+    "set_par": {
+      "leading": "leading (between lines)",
+      "spacing": "spacing (between paragraphs)",
+      "indent":  "first-line-indent",
+      "justify": "justify"
+    },
+    "set_list": {
+      "spacing":     "spacing (between items)",
+      "indent":      "indent (before marker)",
+      "body-indent": "body-indent (after marker)",
+      "tight":       "tight (compact)"
+    },
+    "hline": {
+      "p1":   "#line 100% × 1pt",
+      "p05":  "#line 100% × 0.5pt",
+      "d1":   "#line 1pt dashed",
+      "d05":  "#line 0.5pt dashed",
+      "red":  "#line 1pt red",
+      "blue": "#line 1pt blue",
+      "gray": "#line 0.5pt gray"
+    },
+    "itemize": {
+      "dash":   "- item",
+      "bullet": "• (bullet)",
+      "tri":    "‣ (triangle)",
+      "star":   "★ (star)",
+      "wedge":  "▸ (wedge)"
+    },
+    "enumerate": {
+      "plus":         "+ item",
+      "hier":         "1.a.i.",
+      "paren":        "(1)",
+      "bracket":      "[1]",
+      "circled":      "① ② ③",
+      "circled-inv":  "❶ ❷ ❸"
+    },
+    "int": {
+      "cont": "integral.cont (contour)"
+    },
+    "arrows_special": {
+      "squig": "arrow.squiggly",
+      "hook-r": "arrow.r.hook",
+      "hook-l": "arrow.l.hook",
+      "tail": "arrow.r.tail",
+      "tr": "arrow.tr",
+      "br": "arrow.br",
+      "tl": "arrow.tl",
+      "bl": "arrow.bl",
+      "wave-r": "arrow.wave"
+    },
+    "math_spaces": {
+      "quad":  "quad  (≈ 1 em)",
+      "wide":  "wide  (≈ 2 em)",
+      "thick": "thick (thick)",
+      "med":   "med   (medium)",
+      "thin":  "thin  (thin)"
+    },
+    "fontsize": {
+      "p12": "12pt (default)",
+      "p14": "14pt",
+      "p18": "18pt (large)"
+    },
+    "align_math": {
+      "plain": "Aligned math block"
+    },
+    "matrix": {
+      "custom": "Matrix assistant…"
+    }
+  }
+}

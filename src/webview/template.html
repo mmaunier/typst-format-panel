@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="{{t.__html_lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typst Format Panel</title>
+  <style>{{CSS_CONTENT}}</style>
+</head>
+<body>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('format')">{{t.tab.formats}}</button>
+    <button class="tab" onclick="switchTab('math')">{{t.tab.math}}</button>
+    <button class="tab" onclick="switchTab('perso')">{{t.tab.perso}}</button>
+  </div>
+
+  {{FORMAT_HTML}}
+  {{MATH_HTML}}
+  {{PERSO_HTML}}
+
+  <!-- Menu contextuel -->
+  <div id="contextMenu" class="context-menu">
+    <div class="context-menu-overlay" onclick="hideContextMenu()"></div>
+    <div class="context-menu-content">
+      <div class="context-menu-header">
+        <span id="contextMenuTitle">{{t.menu.variants_suffix}}</span>
+        <button class="context-menu-close" onclick="hideContextMenu()">×</button>
+      </div>
+      <div id="contextMenuItems" class="context-menu-items"></div>
+    </div>
+  </div>
+
+  <!-- ================= Modale #table ================= -->
+  <div id="tblrModal" class="modal">
+    <div class="modal-overlay" onclick="hideModal('tblrModal')"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>{{t.modal.table.title}}</span>
+        <button class="modal-close" onclick="hideModal('tblrModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="tblrForm">
+          <div class="form-group">
+            <label for="rows">{{t.modal.table.rows}}</label>
+            <input type="number" id="rows" name="rows" min="1" max="20" value="3">
+          </div>
+          <div class="form-group">
+            <label for="cols">{{t.modal.table.cols}}</label>
+            <input type="number" id="cols" name="cols" min="1" max="10" value="3">
+          </div>
+          <div class="form-group">
+            <label for="style">{{t.modal.table.style}}</label>
+            <select id="style" name="style">
+              <option value="grid" selected>{{t.modal.table.style_grid}}</option>
+              <option value="hlines">{{t.modal.table.style_hlines}}</option>
+              <option value="vlines">{{t.modal.table.style_vlines}}</option>
+              <option value="simple">{{t.modal.table.style_simple}}</option>
+            </select>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label for="headerRowBold">{{t.modal.table.headerRowBold}}</label>
+            <input type="checkbox" id="headerRowBold" name="headerRowBold" checked>
+          </div>
+          <div class="form-group">
+            <label for="headerRowFilled">{{t.modal.table.headerRowFilled}}</label>
+            <input type="checkbox" id="headerRowFilled" name="headerRowFilled">
+          </div>
+          <div class="form-group">
+            <label for="headerColBold">{{t.modal.table.headerColBold}}</label>
+            <input type="checkbox" id="headerColBold" name="headerColBold">
+          </div>
+          <div class="form-group">
+            <label for="headerColFilled">{{t.modal.table.headerColFilled}}</label>
+            <input type="checkbox" id="headerColFilled" name="headerColFilled">
+          </div>
+          <div class="form-group">
+            <label for="removeFirstCell">{{t.modal.table.removeFirstCell}}</label>
+            <input type="checkbox" id="removeFirstCell" name="removeFirstCell">
+          </div>
+          <div class="form-group">
+            <label for="alternateColors">{{t.modal.table.alternateColors}}</label>
+            <input type="checkbox" id="alternateColors" name="alternateColors">
+          </div>
+          <div class="form-group buttons">
+            <button type="button" onclick="hideModal('tblrModal')">{{t.modal.cancel}}</button>
+            <button type="button" onclick="submitTblrForm()">{{t.modal.create}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Modale #grid ================= -->
+  <div id="gridModal" class="modal">
+    <div class="modal-overlay" onclick="hideModal('gridModal')"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>{{t.modal.grid.title}}</span>
+        <button class="modal-close" onclick="hideModal('gridModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="gridForm">
+          <div class="form-group">
+            <label for="gridCols">{{t.modal.grid.cols}}</label>
+            <input type="number" id="gridCols" name="gridCols" min="1" max="10" value="2">
+          </div>
+          <div class="form-group">
+            <label for="gridRows">{{t.modal.grid.rows}}</label>
+            <input type="number" id="gridRows" name="gridRows" min="1" max="20" value="2">
+          </div>
+          <div class="form-group">
+            <label>{{t.modal.grid.widths_label}}</label>
+            <div class="radio-group">
+              <label><input type="radio" name="widthMode" value="equal" checked onclick="toggleGridWidthCustom()"> {{t.modal.grid.widths_equal}}</label>
+              <label><input type="radio" name="widthMode" value="auto"  onclick="toggleGridWidthCustom()"> {{t.modal.grid.widths_auto}}</label>
+              <label><input type="radio" name="widthMode" value="custom" onclick="toggleGridWidthCustom()"> {{t.modal.grid.widths_custom}}</label>
+            </div>
+          </div>
+          <div id="gridWidthCustomFields" class="form-group" style="display:none;">
+            <label for="widthCustom">{{t.modal.grid.custom_placeholder}}</label>
+            <input type="text" id="widthCustom" name="widthCustom" placeholder="{{t.modal.grid.custom_hint}}">
+          </div>
+          <div class="form-group">
+            <label for="rowGutter">{{t.modal.grid.rowGutter}}</label>
+            <input type="number" step="0.1" id="rowGutter" name="rowGutter" value="1">
+          </div>
+          <div class="form-group">
+            <label for="colGutter">{{t.modal.grid.colGutter}}</label>
+            <input type="number" step="0.1" id="colGutter" name="colGutter" value="1">
+          </div>
+          <div class="form-group">
+            <label for="gridAlign">{{t.modal.grid.align}}</label>
+            <select id="gridAlign" name="gridAlign">
+              <option value="left" selected>{{t.modal.grid.align_left}}</option>
+              <option value="center">{{t.modal.grid.align_center}}</option>
+              <option value="right">{{t.modal.grid.align_right}}</option>
+            </select>
+          </div>
+          <div class="form-group buttons">
+            <button type="button" onclick="hideModal('gridModal')">{{t.modal.cancel}}</button>
+            <button type="button" onclick="submitGridForm()">{{t.modal.create}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Modale matrice ================= -->
+  <div id="matrixModal" class="modal">
+    <div class="modal-overlay" onclick="hideModal('matrixModal')"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>{{t.modal.matrix.title}}</span>
+        <button class="modal-close" onclick="hideModal('matrixModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="matrixForm">
+          <div class="form-group">
+            <label>{{t.modal.matrix.dimensions}}</label>
+            <div class="radio-group">
+              <label><input type="radio" name="matrixSize" value="2x2" checked onclick="toggleCustomSizeFields()"> 2×2</label>
+              <label><input type="radio" name="matrixSize" value="3x3" onclick="toggleCustomSizeFields()"> 3×3</label>
+              <label><input type="radio" name="matrixSize" value="custom" onclick="toggleCustomSizeFields()"> {{t.modal.matrix.size_custom}}</label>
+            </div>
+          </div>
+          <div id="customSizeFields" style="display: none;">
+            <div class="form-group">
+              <label for="matrixRows">{{t.modal.matrix.custom_rows}}</label>
+              <input type="number" id="matrixRows" name="matrixRows" min="1" max="10" value="2">
+            </div>
+            <div class="form-group">
+              <label for="matrixCols">{{t.modal.matrix.custom_cols}}</label>
+              <input type="number" id="matrixCols" name="matrixCols" min="1" max="10" value="2">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="matrixType">{{t.modal.matrix.type}}</label>
+            <select id="matrixType" name="matrixType">
+              <option value="pmatrix" selected>{{t.modal.matrix.type_pmatrix}}</option>
+              <option value="bmatrix">{{t.modal.matrix.type_bmatrix}}</option>
+              <option value="vmatrix">{{t.modal.matrix.type_vmatrix}}</option>
+              <option value="Vmatrix">{{t.modal.matrix.type_Vmatrix}}</option>
+              <option value="Bmatrix">{{t.modal.matrix.type_Bmatrix}}</option>
+              <option value="plain">{{t.modal.matrix.type_plain}}</option>
+            </select>
+          </div>
+          <div class="form-group buttons">
+            <button type="button" onclick="hideModal('matrixModal')">{{t.modal.cancel}}</button>
+            <button type="button" onclick="submitMatrixForm()">{{t.modal.create}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const vscode = acquireVsCodeApi();
+    const commandVariants = {{COMMAND_VARIANTS}};
+    const contextMenuSuffix = {{CONTEXT_MENU_SUFFIX}};
+
+    function sendCommand(command, variantId = null, customParams = null) {
+      vscode.postMessage({ command, variant: variantId, customParams });
+    }
+
+    function showContextMenu(event, command) {
+      const variants = commandVariants[command];
+      if (!variants || !variants.variants) return;
+
+      const menu = document.getElementById('contextMenu');
+      const menuItems = document.getElementById('contextMenuItems');
+      const menuTitle = document.getElementById('contextMenuTitle');
+      const content = menu.querySelector('.context-menu-content');
+
+      menuTitle.textContent = command.toUpperCase() + contextMenuSuffix;
+      menuItems.innerHTML = '';
+      variants.variants.forEach(variant => {
+        const item = document.createElement('button');
+        item.className = 'context-menu-item';
+        item.innerHTML =
+          '<div class="context-menu-item-label">' + escapeHtml(variant.label || '') + '</div>' +
+          (variant.description ? '<div class="context-menu-item-description">' + escapeHtml(variant.description) + '</div>' : '') +
+          (variant.package ? '<div class="context-menu-item-package">Package: ' + escapeHtml(variant.package) + '</div>' : '');
+        item.onclick = (e) => {
+          e.stopPropagation();
+          sendCommand(command, variant.id);
+          hideContextMenu();
+        };
+        menuItems.appendChild(item);
+      });
+
+      content.style.left = '-9999px';
+      content.style.top  = '-9999px';
+      content.style.visibility = 'hidden';
+      menu.classList.add('show');
+
+      const menuW = content.offsetWidth;
+      const menuH = content.offsetHeight;
+      const btn = event.currentTarget || event.target;
+      const btnRect = btn.getBoundingClientRect();
+      const vw = document.documentElement.clientWidth;
+      const vh = document.documentElement.clientHeight;
+      const margin = 5;
+
+      let x = btnRect.left;
+      if (x + menuW > vw - margin) x = vw - menuW - margin;
+      if (x < margin) x = margin;
+
+      let y = btnRect.bottom + 4;
+      if (y + menuH > vh - margin) {
+        const yAbove = btnRect.top - menuH - 4;
+        if (yAbove >= margin) y = yAbove;
+        else y = Math.max(margin, vh - menuH - margin);
+      }
+
+      content.style.left = x + 'px';
+      content.style.top  = y + 'px';
+      content.style.visibility = '';
+
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+      ));
+    }
+
+    function hideContextMenu() {
+      const menu = document.getElementById('contextMenu');
+      if (menu) menu.classList.remove('show');
+    }
+
+    function switchTab(tabName) {
+      hideContextMenu();
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(tabName + '-tab').classList.add('active');
+      event.target.classList.add('active');
+    }
+    function showModal(id) { const m = document.getElementById(id); if (m) m.classList.add('show'); }
+    function hideModal(id) { const m = document.getElementById(id); if (m) m.classList.remove('show'); }
+
+    function showTblrModal(event) {
+      event.preventDefault(); event.stopPropagation();
+      hideContextMenu();
+      document.getElementById('rows').value = '3';
+      document.getElementById('cols').value = '3';
+      document.getElementById('style').value = 'grid';
+      document.getElementById('headerRowBold').checked = true;
+      document.getElementById('headerRowFilled').checked = false;
+      document.getElementById('headerColBold').checked = false;
+      document.getElementById('headerColFilled').checked = false;
+      document.getElementById('removeFirstCell').checked = false;
+      document.getElementById('alternateColors').checked = false;
+      showModal('tblrModal');
+    }
+    function submitTblrForm() {
+      const params = {
+        rows: parseInt(document.getElementById('rows').value, 10) || 3,
+        cols: parseInt(document.getElementById('cols').value, 10) || 3,
+        style: document.getElementById('style').value,
+        headerRowBold:   document.getElementById('headerRowBold').checked,
+        headerRowFilled: document.getElementById('headerRowFilled').checked,
+        headerColBold:   document.getElementById('headerColBold').checked,
+        headerColFilled: document.getElementById('headerColFilled').checked,
+        removeFirstCell: document.getElementById('removeFirstCell').checked,
+        alternateColors: document.getElementById('alternateColors').checked
+      };
+      vscode.postMessage({ command: 'typst_table', customParams: params });
+      hideModal('tblrModal');
+    }
+
+    function showGridModal(event) {
+      event.preventDefault(); event.stopPropagation();
+      hideContextMenu();
+      document.getElementById('gridCols').value = '2';
+      document.getElementById('gridRows').value = '2';
+      document.querySelector('input[name="widthMode"][value="equal"]').checked = true;
+      document.getElementById('widthCustom').value = '';
+      document.getElementById('gridWidthCustomFields').style.display = 'none';
+      document.getElementById('rowGutter').value = '1';
+      document.getElementById('colGutter').value = '1';
+      document.getElementById('gridAlign').value = 'left';
+      showModal('gridModal');
+    }
+    function toggleGridWidthCustom() {
+      const custom = document.querySelector('input[name="widthMode"][value="custom"]');
+      document.getElementById('gridWidthCustomFields').style.display = custom.checked ? 'block' : 'none';
+    }
+    function submitGridForm() {
+      const wm = document.querySelector('input[name="widthMode"]:checked').value;
+      const params = {
+        cols: parseInt(document.getElementById('gridCols').value, 10) || 2,
+        rows: parseInt(document.getElementById('gridRows').value, 10) || 2,
+        widthMode: wm,
+        widthCustom: document.getElementById('widthCustom').value,
+        rowGutter: document.getElementById('rowGutter').value,
+        colGutter: document.getElementById('colGutter').value,
+        align: document.getElementById('gridAlign').value
+      };
+      vscode.postMessage({ command: 'typst_grid', customParams: params });
+      hideModal('gridModal');
+    }
+
+    function toggleCustomSizeFields() {
+      const customRadio = document.querySelector('input[name="matrixSize"][value="custom"]');
+      document.getElementById('customSizeFields').style.display = customRadio.checked ? 'block' : 'none';
+    }
+    function showMatrixModal(event) {
+      event.preventDefault(); event.stopPropagation();
+      hideContextMenu();
+      document.querySelector('input[name="matrixSize"][value="2x2"]').checked = true;
+      document.getElementById('matrixRows').value = '2';
+      document.getElementById('matrixCols').value = '2';
+      document.getElementById('matrixType').value = 'pmatrix';
+      document.getElementById('customSizeFields').style.display = 'none';
+      showModal('matrixModal');
+    }
+    function submitMatrixForm() {
+      const radio = document.querySelector('input[name="matrixSize"]:checked');
+      let rows, cols;
+      if (radio.value === 'custom') {
+        rows = parseInt(document.getElementById('matrixRows').value) || 2;
+        cols = parseInt(document.getElementById('matrixCols').value) || 2;
+      } else {
+        const [r, c] = radio.value.split('x');
+        rows = parseInt(r) || 2; cols = parseInt(c) || 2;
+      }
+      const matrixType = document.getElementById('matrixType').value;
+      vscode.postMessage({
+        command: 'matrix', variant: null,
+        customParams: { rows, cols, matrixType }
+      });
+      hideModal('matrixModal');
+    }
+
+    document.addEventListener('contextmenu', function (e) {
+      if (!e.target.hasAttribute('oncontextmenu')) e.preventDefault();
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.context-menu-content')) hideContextMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') hideContextMenu();
+    });
+    document.addEventListener('DOMContentLoaded', hideContextMenu);
+  </script>
+</body>
+</html>

@@ -1,0 +1,702 @@
+body {
+   font-family: var(--vscode-font-family);
+   font-size: var(--vscode-font-size);
+   color: var(--vscode-foreground);
+   background-color: var(--vscode-sideBar-background);
+   margin: 0;
+   padding: 10px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    background-color: var(--vscode-editor-background);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.tab {
+    background-color: transparent;
+    color: var(--vscode-tab-inactiveForeground);
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    flex: 1;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.tab:hover {
+    background-color: var(--vscode-tab-hoverBackground);
+    color: var(--vscode-tab-activeForeground);
+}
+
+.tab.active {
+    background-color: var(--vscode-tab-activeBackground);
+    color: var(--vscode-tab-activeForeground);
+    border-bottom: 2px solid var(--vscode-button-background);
+}
+
+.tab.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--vscode-button-background);
+}
+
+.tab-content {
+   display: none;
+}
+
+.tab-content.active {
+   display: block;
+}
+
+h3 {
+   margin-top: 0;
+   margin-bottom: 8px;
+   color: var(--vscode-foreground);
+   font-size: 14px;
+   font-weight: bold;
+}
+
+.button-group {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 3px;
+   margin-bottom: 8px;
+}
+
+.format-button {
+   background-color: var(--vscode-button-background);
+   color: var(--vscode-button-foreground);
+   border: none;
+   padding: 5px 2px;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 11px;
+   flex: 1;
+   min-width: 0;
+   max-width: calc(25% - 2.25px);
+    text-align: center;    /* Centrage du contenu */
+    display: flex;    /* Pour un meilleur contrôle du centrage */
+    align-items: center;    /* Centrage vertical */
+    justify-content: center;    /* Centrage horizontal */
+    overflow: hidden;    /* Empêche le débordement */
+    white-space: nowrap;    /* Évite le retour à la ligne */
+    line-height: 1;    /* Réduit l'espacement vertical */
+}
+
+.format-button:hover {
+   background-color: var(--vscode-button-hoverBackground);
+}
+
+/* Style pour les boutons format secondaires (gris) */
+.format-button.secondary {
+    background-color: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    font-weight: 500;
+    font-size: 11px;
+    padding: 5px 2px;    /* Assure le même padding */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.format-button.secondary:hover {
+    background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+.size-button {
+   background-color: var(--vscode-button-secondaryBackground);
+   color: var(--vscode-button-secondaryForeground);
+   border: none;
+   padding: 4px 6px;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 10px;
+   flex: 1;
+   min-width: 0;
+   max-width: calc(25% - 2.25px);
+}
+
+.size-button:hover {
+   background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+.transform-button {
+   background-color: var(--vscode-button-background);
+   color: var(--vscode-button-foreground);
+   border: none;
+   padding: 4px 6px;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 10px;
+   flex: 1;
+   min-width: 0;
+   max-width: calc(25% - 2.25px);
+}
+
+.transform-button:hover {
+   background-color: var(--vscode-button-hoverBackground);
+}
+
+.math-button {
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    padding: 4px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    flex: 1;
+    min-width: 0;
+    max-width: calc(16.66% - 2.5px); /* Ajusté pour 6 boutons par ligne */
+    line-height: 1.1;
+}
+
+.math-button:hover {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+.math-button.secondary {
+    background-color: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.math-button.secondary:hover {
+    background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+/* Style pour les boutons d'environnement - 3 boutons par ligne */
+.button-group .format-button:nth-child(1):nth-last-child(3),
+.button-group .format-button:nth-child(2):nth-last-child(2),
+.button-group .format-button:nth-child(3):nth-last-child(1) {
+    max-width: calc(33.33% - 2px);
+}
+
+.button-group .format-button:nth-child(1):nth-last-child(2),
+.button-group .format-button:nth-child(2):nth-last-child(1) {
+    max-width: calc(50% - 2px);
+}
+
+/* Style spécifique pour les boutons d'environnement */
+.format-button.environment {
+    font-weight: 500;
+    font-size: 11px;
+}
+
+/* Style pour les boutons d'environnement secondaires (gris) */
+.format-button.environment-secondary {
+    background-color: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.format-button.environment-secondary:hover {
+    background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+/* Style pour les lettres en italiques dans les boutons mathématiques */
+.math-button em {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+/* Styles spécifiques pour différents types de contenu */
+.math-button svg text {
+    font-size: 8px;
+    font-style: italic;
+}
+
+/* Gestion flexible des largeurs selon le nombre de boutons */
+.button-group .math-button:nth-child(1):nth-last-child(1) { max-width: 100%; }
+.button-group .math-button:nth-child(1):nth-last-child(2),
+.button-group .math-button:nth-child(2):nth-last-child(1) { max-width: calc(50% - 1.5px); }
+.button-group .math-button:nth-child(1):nth-last-child(3),
+.button-group .math-button:nth-child(2):nth-last-child(2),
+.button-group .math-button:nth-child(3):nth-last-child(1) { max-width: calc(33.33% - 2px); }
+.button-group .math-button:nth-child(1):nth-last-child(4),
+.button-group .math-button:nth-child(2):nth-last-child(3),
+.button-group .math-button:nth-child(3):nth-last-child(2),
+.button-group .math-button:nth-child(4):nth-last-child(1) { max-width: calc(25% - 2.25px); }
+.button-group .math-button:nth-child(1):nth-last-child(5),
+.button-group .math-button:nth-child(2):nth-last-child(4),
+.button-group .math-button:nth-child(3):nth-last-child(3),
+.button-group .math-button:nth-child(4):nth-last-child(2),
+.button-group .math-button:nth-child(5):nth-last-child(1) { max-width: calc(20% - 2.4px); }
+.button-group .math-button:nth-child(1):nth-last-child(6),
+.button-group .math-button:nth-child(2):nth-last-child(5),
+.button-group .math-button:nth-child(3):nth-last-child(4),
+.button-group .math-button:nth-child(4):nth-last-child(3),
+.button-group .math-button:nth-child(5):nth-last-child(2),
+.button-group .math-button:nth-child(6):nth-last-child(1) { max-width: calc(16.66% - 2.5px); }
+
+.separator {
+   height: 1px;
+   background-color: var(--vscode-widget-border);
+   margin: 8px 0;
+}
+
+.center-button {
+   background-color: var(--vscode-button-secondaryBackground);
+   color: var(--vscode-button-secondaryForeground);
+   border: none;
+   padding: 8px;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 12px;
+   width: 100%;
+}
+
+.center-button:hover {
+   background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+.button-group.partial {
+   justify-content: flex-start;
+}
+
+/* Styles pour les boutons */
+.format-button.bold {
+   font-weight: bold;
+}
+
+.format-button.italic {
+   font-style: italic;
+}
+
+.format-button.underline {
+   text-decoration: underline;
+}
+
+.format-button.slanted {
+   font-style: oblique;
+}
+
+.format-button.tt {
+   font-family: monospace;
+}
+
+.format-button.smallcaps {
+   font-variant: small-caps;
+   font-size: 8px;
+}
+
+.format-button.highlight {
+   background-color: yellow;
+   color: black;
+}
+
+.format-button.highlight:hover {
+   background-color: #ffff66;
+}
+
+.format-button.emphasis {
+   font-style: italic;
+   font-weight: bold;
+}
+
+.format-button.mathbb {
+   font-weight: bold;
+   font-family: serif;
+}
+
+.format-button.mathcal {
+   font-family: cursive;
+   font-style: italic;
+}
+
+.format-button.uppercase {
+   text-transform: uppercase;
+}
+
+.format-button.lowercase {
+   text-transform: lowercase;
+}
+
+.format-button.capitalize {
+   text-transform: capitalize;
+}
+
+.align-button {
+   background-color: var(--vscode-button-secondaryBackground);
+   color: var(--vscode-button-secondaryForeground);
+   border: none;
+   padding: 8px 6px;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 11px;
+   flex: 1;
+   min-width: 0;
+   max-width: calc(33.33% - 2px);
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.align-button:hover {
+   background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+.align-button svg {
+   width: 16px;
+   height: 12px;
+   fill: currentColor;
+}
+
+/* Menu contextuel */
+.context-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+}
+
+.context-menu.show {
+    display: block;
+    pointer-events: auto;
+}
+
+.context-menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.context-menu-content {
+    position: absolute;
+    background: var(--vscode-menu-background);
+    border: 1px solid var(--vscode-menu-border);
+    border-radius: 4px;
+    min-width: 250px;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+}
+
+.context-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--vscode-menu-selectionBackground);
+    border-bottom: 1px solid var(--vscode-menu-border);
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--vscode-menu-foreground);
+}
+
+.context-menu-close {
+    background: none;
+    border: none;
+    color: var(--vscode-menu-foreground);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.context-menu-close:hover {
+    background: var(--vscode-toolbar-hoverBackground);
+}
+
+.context-menu-items {
+    padding: 4px 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.context-menu-item {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--vscode-menu-foreground);
+    font-size: 11px;
+    transition: background-color 0.1s;
+}
+
+.context-menu-item:hover {
+    background: var(--vscode-menu-selectionBackground);
+}
+
+.context-menu-item:focus {
+    outline: none;
+    background: var(--vscode-menu-selectionBackground);
+}
+
+.context-menu-item.disabled {
+    color: var(--vscode-disabledForeground);
+    cursor: not-allowed;
+}
+
+.context-menu-item.disabled:hover {
+    background: transparent;
+}
+
+.context-menu-item-label {
+    font-family: var(--vscode-editor-font-family), monospace;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: var(--vscode-menu-foreground);
+}
+
+.context-menu-item-description {
+    font-size: 10px;
+    color: var(--vscode-descriptionForeground);
+    margin-bottom: 2px;
+}
+
+.context-menu-item-package {
+    font-size: 9px;
+    color: var(--vscode-textLink-foreground);
+    font-style: italic;
+}
+
+/* Tooltip personnalisé avec data-tooltip */
+.format-button[data-tooltip] {
+    position: relative;
+}
+
+.format-button[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--vscode-editorHoverWidget-background);
+    color: var(--vscode-editorHoverWidget-foreground);
+    border: 1px solid var(--vscode-editorHoverWidget-border);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Petite flèche pour le tooltip */
+.format-button[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: var(--vscode-editorHoverWidget-border);
+    margin-bottom: -1px;
+    z-index: 1001;
+}
+
+/* Styles pour la fenêtre modale */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1010;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1011;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-editorWidget-border);
+  border-radius: 4px;
+  z-index: 1012;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--vscode-editorWidget-border);
+  font-weight: bold;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--vscode-editor-foreground);
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="number"], 
+.form-group select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border-radius: 2px;
+}
+
+.form-group.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-group.buttons button {
+  padding: 5px 12px;
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.form-group.buttons button:hover {
+  background-color: var(--vscode-button-hoverBackground);
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  margin: 0;
+}
+
+/* Style pour les boutons perso - basé sur format-button mais avec largeur fixe */
+.perso-button {
+   background-color: var(--vscode-button-background);
+   color: var(--vscode-button-foreground);
+   border: none;
+   padding: 6px 8px;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 11px;
+   flex: 1;
+   min-width: 0;
+   max-width: calc(33.33% - 2px); /* Toujours 3 boutons par ligne */
+}
+
+.perso-button:hover {
+   background-color: var(--vscode-button-hoverBackground);
+}
+
+/* Style pour les boutons perso secondaires (si besoin) */
+.perso-button.secondary {
+    background-color: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.perso-button.secondary:hover {
+    background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+/* Tooltip pour les boutons perso */
+.perso-button[data-tooltip] {
+    position: relative;
+}
+
+.perso-button[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--vscode-editorHoverWidget-background);
+    color: var(--vscode-editorHoverWidget-foreground);
+    border: 1px solid var(--vscode-editorHoverWidget-border);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.perso-button[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: var(--vscode-editorHoverWidget-border);
+    margin-bottom: -1px;
+    z-index: 1001;
+}

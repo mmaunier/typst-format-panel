@@ -18,16 +18,19 @@ function getMathCommands() {
     // Flèches spéciales (bouton dédié)
     'arrows_special',
     // Espacements math
-    'math_spaces',
+    'math_spaces', 'mthin', 'stretch',
     // Ensembles usuels (avec bb(D))
     'setN', 'setZ', 'setD', 'setQ', 'setR', 'setC',
     // Symboles logiques / ensemblistes
     'in', 'subset', 'cup', 'cap', 'forall', 'exists',
     'cdot', 'dots', 'times', 'div', 'pm',
-    // Vecteurs et décorations
-    'vec', 'widehat', 'underset', 'overset',
+    // Styles et annotations (vecteurs, accents, attaches, cancel/braces)
+    'vecarrow', 'vec', 'widehat', 'underset', 'overset',
+    'op', 'accent', 'attach', 'cancel', 'underbrace', 'overbrace',
     // Délimiteurs
     'left_paren', 'left_bracket', 'left_brace', 'left_abs', 'left_norm',
+    // Fonctions numériques (paquet zero)
+    'num',
     // Environnements math + display()
     'inline_math', 'display_math', 'display',
     // Matrices / array / systèmes / cas

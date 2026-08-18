@@ -3,7 +3,7 @@
   "displayName": "Typst Format Panel",
   "description": "Interactive side panel for Typst editing in VSCode: text formatting, math symbols, tables, grids and a fully customizable custom tab. English and French UI.",
   "icon": "media/icon.png",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "mmaunier",
   "author": {
     "name": "Mikaël Maunier",
@@ -55,11 +55,7 @@
       "properties": {
         "typstFormatPanel.language": {
           "type": "string",
-          "enum": [
-            "auto",
-            "en",
-            "fr"
-          ],
+          "enum": ["auto", "en", "fr"],
           "default": "auto",
           "description": "Interface language for the side panel. 'auto' follows VSCode's display language and falls back to English if unsupported.",
           "markdownDescription": "Interface language for the side panel.\n\n- `auto` — follow VSCode's `env.language` (defaults to English if unsupported).\n- `en` — force English.\n- `fr` — force French.\n\nAdditional languages can be added by dropping a `<lang>.json` file in the extension's `src/i18n/` directory."
@@ -98,44 +94,24 @@
             "properties": {
               "type": {
                 "type": "string",
-                "enum": [
-                  "titre",
-                  "bouton",
-                  "bouton_variantes"
-                ]
+                "enum": ["titre", "bouton", "bouton_variantes"]
               },
-              "texte": {
-                "type": "string"
-              },
-              "commande": {
-                "type": "string"
-              },
-              "defaut": {
-                "type": "integer",
-                "minimum": 1
-              },
+              "texte": { "type": "string" },
+              "commande": { "type": "string" },
+              "defaut": { "type": "integer", "minimum": 1 },
               "variantes": {
                 "type": "array",
                 "items": {
                   "type": "object",
                   "properties": {
-                    "texte": {
-                      "type": "string"
-                    },
-                    "commande": {
-                      "type": "string"
-                    }
+                    "texte": { "type": "string" },
+                    "commande": { "type": "string" }
                   },
-                  "required": [
-                    "texte",
-                    "commande"
-                  ]
+                  "required": ["texte", "commande"]
                 }
               }
             },
-            "required": [
-              "type"
-            ]
+            "required": ["type"]
           }
         }
       }

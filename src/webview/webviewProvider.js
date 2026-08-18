@@ -26,10 +26,22 @@ function resolveVariants(variants, t) {
 }
 
 /**
- * Remplace tous les {{t.a.b.c}} dans une chaîne par t('a.b.c').
+ * Échappe les caractères spéciaux HTML — nécessaire car les {{t.xxx}} sont
+ * substitués tels quels dans du HTML brut (pas via textContent). Sans ça,
+ * une traduction contenant "<" ou ">" (ex. le bouton label "<>") est
+ * interprétée comme une balise HTML et disparaît silencieusement.
+ */
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+}
+
+/**
+ * Remplace tous les {{t.a.b.c}} dans une chaîne par t('a.b.c') (échappé HTML).
  */
 function substituteTranslations(str, t) {
-  return str.replace(/\{\{\s*t\.([a-zA-Z0-9_.-]+)\s*\}\}/g, (_, key) => t(key));
+  return str.replace(/\{\{\s*t\.([a-zA-Z0-9_.-]+)\s*\}\}/g, (_, key) => escapeHtml(t(key)));
 }
 
 function getHtmlTemplate(extensionUri) {
@@ -45,6 +57,14 @@ function getHtmlTemplate(extensionUri) {
   let mathHtml        = fs.readFileSync(p('math.html'),    'utf8');
   const cssContent    = fs.readFileSync(p('styles.css'),   'utf8');
   const persoHtml     = generatePersoHtml();
+
+  // {{t.__html_lang}} n'est PAS une clé i18n (elle n'existe dans aucun
+  // dictionnaire) : il faut la résoudre AVANT substituteTranslations,
+  // sinon la regex générique la consomme et la remplace par la clé brute
+  // "__html_lang" au lieu de "en"/"fr" (le .replace ciblé plus bas ne
+  // trouve alors plus rien à remplacer).
+  const htmlLangEarly = (lang === 'fr') ? 'fr' : 'en';
+  templateContent = templateContent.replace('{{t.__html_lang}}', htmlLangEarly);
 
   // Substituer les {{t.xxx}} dans les trois HTML
   templateContent = substituteTranslations(templateContent, t);
@@ -68,10 +88,8 @@ function getHtmlTemplate(extensionUri) {
 
   // Suffixe du titre du menu contextuel (variable JS injectée)
   const contextMenuSuffix = t('menu.variants_suffix');
-  const htmlLang = (lang === 'fr') ? 'fr' : 'en';
 
   return templateContent
-    .replace('{{t.__html_lang}}',      htmlLang)
     .replace('{{CSS_CONTENT}}',        cssContent)
     .replace('{{FORMAT_HTML}}',        formatHtml)
     .replace('{{MATH_HTML}}',          mathHtml)

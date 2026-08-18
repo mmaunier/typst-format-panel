@@ -1,6 +1,6 @@
 # Typst Format Panel
 
-[![Version](https://img.shields.io/badge/version-0.1.4-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.1.5-blue.svg)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.txt)
 [![VSCode ^1.80.0](https://img.shields.io/badge/VSCode-%5E1.80.0-007ACC.svg)](https://code.visualstudio.com/)
 

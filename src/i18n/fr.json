@@ -22,11 +22,12 @@
     "math_frac": "Fractions et racines",
     "math_compare": "Comparaisons et flèches",
     "math_arrows_other": "Autres flèches",
+    "math_spacing": "Espacements",
     "math_funcs": "Fonctions",
     "math_delim": "Délimiteurs et matrices",
     "math_sets": "Ensembles",
     "math_logic": "Logique et symboles",
-    "math_dec": "Décorations",
+    "math_styles": "Styles et annotations",
     "math_env": "Environnements math"
   },
 
@@ -63,8 +64,20 @@
     "figure": "figure",
     "image": "image",
     "footnote": "footnote",
-    "label": "<label>",
+    "label": "<>",
     "ref": "@ref",
+    "super": "super",
+    "sub": "sub",
+    "skew": "skew",
+    "hide": "hide",
+    "rotate": "rotate",
+    "rect": "rect",
+    "contentblock": "#[ ]",
+    "colbreak": "colbreak",
+    "move": "move",
+    "place": "place",
+    "pad": "pad",
+    "special_spaces": "⎵ espaces",
     "grid2": "#grid 2col",
     "grid3": "#grid 3col",
     "grid_modal": "#grid …",
@@ -75,13 +88,24 @@
     "uncomment": "Décommenter",
     "arrows_special": "⇝ autres flèches",
     "math_spaces": "⎵ espaces math",
+    "mthin": "fine",
+    "stretch": "stretch(...)",
     "matrix": "mat",
     "array": "array",
+    "vec": "vec(...)",
+    "op": "op(...)",
+    "accent": "accent",
+    "attach": "attach",
+    "cancel": "cancel",
+    "underbrace": "sous{ }",
+    "overbrace": "sur{ }",
+    "num": "num(...)",
     "inline_math": "$…$",
     "display_math": "$ … $",
     "display": "display()",
     "align_math": "= & align",
-    "cases": "cases"
+    "cases": "cases",
+    "scr": "𝓈𝒸𝓇"
   },
 
   "menu": {
@@ -157,6 +181,7 @@
     "highlight": { "highlight": "Surligné jaune" },
     "smallcaps": { "sc": "Petites capitales" },
     "cal": { "cal": "Calligraphie — wrap auto dans $…$ en mode texte" },
+    "scr": { "scr": "Script (manuscrite) — wrap auto dans $…$ en mode texte" },
 
     "code": {
       "inline": "Code en ligne",
@@ -278,6 +303,49 @@
     "label": { "lbl": "Étiquette" },
     "ref": { "r": "Référence à une étiquette" },
 
+    "super": { "super": "Exposant (texte)" },
+    "sub": { "sub": "Indice (texte)" },
+    "skew": {
+      "left":  "Incliner à gauche (effet faux italique)",
+      "right": "Incliner à droite"
+    },
+    "hide": { "hide": "Masquer le contenu (garde l'espace réservé en page)" },
+    "rotate": {
+      "r90":  "Rotation 90°",
+      "r45":  "Rotation 45°",
+      "rm45": "Rotation -45°",
+      "r180": "Rotation 180°"
+    },
+    "rect": {
+      "plain":   "Rectangle simple",
+      "filled":  "Rectangle rempli",
+      "rounded": "Coins arrondis"
+    },
+    "contentblock": { "plain": "Bloc de contenu générique (ex. pour cadrer des #set)" },
+    "colbreak": { "cb": "Saut de colonne" },
+    "move": { "move": "Déplace visuellement le contenu, sans affecter la mise en page (dx, dy)" },
+    "place": {
+      "top-left":     "Placer en haut à gauche",
+      "top-right":    "Placer en haut à droite",
+      "bottom-left":  "Placer en bas à gauche",
+      "bottom-right": "Placer en bas à droite",
+      "center":       "Placer au centre"
+    },
+    "pad": {
+      "rest": "Marge intérieure sur tous les côtés",
+      "x":    "Marge intérieure horizontale",
+      "y":    "Marge intérieure verticale"
+    },
+    "special_spaces": {
+      "nbsp":        "Espace insécable (raccourci ~)",
+      "nbsp_narrow": "Espace insécable fine",
+      "thin":        "Espace fine",
+      "hair":        "Espace capillaire",
+      "en":          "Espace cadratin (demi-cadratin)",
+      "punct":       "Espace de ponctuation",
+      "fig":         "Espace chiffre (tabulaire)"
+    },
+
     "grid2": { "g2": "Layout 2 colonnes égales" },
     "grid3": { "g3": "Layout 3 colonnes égales" },
     "typst_grid": { "modal": "Ouvrir l'assistant #grid" },
@@ -353,11 +421,14 @@
       "cdots": "Points de suspension centrés",
       "vdots": "Points de suspension verticaux"
     },
-    "vec": {
-      "plain": "Flèche au-dessus (vecteur)",
-      "over":  "Barre au-dessus"
+    "subset": {
+      "plain": "Sous-ensemble",
+      "not": "N'est pas un sous-ensemble"
     },
-
+    "exists": {
+      "plain": "Il existe",
+      "not": "Il n'existe pas"
+    },
     "inline_math":  { "plain": "Math inline" },
     "display_math": { "plain": "Math display (avec espaces autour)" },
     "display":      { "plain": "Force le style display" },
@@ -372,7 +443,70 @@
       "custom":  "Assistant matrice…"
     },
 
-    "align_math": { "plain": "Bloc math aligné (utilise & et \\ dans $ … $)" }
+    "align_math": { "plain": "Bloc math aligné (utilise & et \\ dans $ … $)" },
+
+    "vecarrow": {
+      "plain": "Flèche au-dessus (vecteur)",
+      "over":  "Barre au-dessus"
+    },
+    "widehat": {
+      "hat":       "Accent chapeau (largeur fixe)",
+      "overparen": "Arc extensible au-dessus (ex. arcs géométriques)"
+    },
+    "vec": {
+      "paren":   "Vecteur colonne, parenthèses (défaut)",
+      "bracket": "Vecteur colonne, crochets",
+      "brace":   "Vecteur colonne, accolades",
+      "bar":     "Vecteur colonne, barres",
+      "none":    "Vecteur colonne, sans délimiteur"
+    },
+    "op": { "plain": "Opérateur personnalisé avec espacement correct (ex. argmax)" },
+    "accent": {
+      "tilde":  "Accent tilde",
+      "dot":    "Accent point",
+      "diaer":  "Accent tréma (double point)",
+      "breve":  "Accent brève",
+      "grave":  "Accent grave",
+      "acute":  "Accent aigu",
+      "caron":  "Accent caron",
+      "circle": "Accent rond (cercle)",
+      "macron": "Accent macron (barre)"
+    },
+    "attach": {
+      "tl": "Attache en haut à gauche",
+      "tr": "Attache en haut à droite",
+      "bl": "Attache en bas à gauche",
+      "br": "Attache en bas à droite"
+    },
+    "cancel": {
+      "plain": "Ligne diagonale de rature",
+      "cross": "Rature en croix (X)"
+    },
+    "underbrace": {
+      "brace":   "Accolade en dessous (défaut)",
+      "line":    "Ligne en dessous",
+      "bracket": "Crochet en dessous",
+      "paren":   "Arc extensible en dessous",
+      "shell":   "Crochet coquille en dessous"
+    },
+    "overbrace": {
+      "brace":   "Accolade au-dessus (défaut)",
+      "line":    "Ligne au-dessus",
+      "bracket": "Crochet au-dessus",
+      "paren":   "Arc extensible au-dessus",
+      "shell":   "Crochet coquille au-dessus"
+    },
+    "mthin": { "thin": "Espace fine (accès rapide)" },
+    "stretch": {
+      "plain": "Étire le glyphe à la largeur du contenu",
+      "sized": "Étire à une taille personnalisée (150%)"
+    },
+    "num": {
+      "plain":  "Formate un nombre (paquet zero)",
+      "round2": "Arrondi à 2 décimales",
+      "round0": "Arrondi à l'entier le plus proche",
+      "import": "À placer en tête de document"
+    }
   },
 
   "label": {
@@ -453,6 +587,9 @@
     },
     "matrix": {
       "custom": "Assistant matrice…"
+    },
+    "mthin": {
+      "thin": "fine (≈ 1/6 em)"
     }
   }
 }

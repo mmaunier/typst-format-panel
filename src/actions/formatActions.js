@@ -5,17 +5,17 @@ const { processTemplate } = require('../../utils/utils');
 function getFormatCommands() {
   return [
     // Texte
-    'bold', 'italic', 'underline', 'strike', 'highlight', 'smallcaps', 'cal', 'code',
+    'bold', 'italic', 'underline', 'strike', 'highlight', 'smallcaps', 'cal', 'scr', 'code',
     // Transformations
-    'uppercase', 'lowercase', 'capitalize',
+    'uppercase', 'lowercase', 'capitalize', 'super', 'sub', 'skew', 'hide', 'rotate',
     // Couleurs / tailles
     'color', 'fontsize',
     // Titres
     'heading1', 'heading2', 'heading3',
     // Alignement
-    'flushleft', 'center', 'flushright',
+    'flushleft', 'center', 'flushright', 'move', 'place', 'pad',
     // Espacement
-    'hspace', 'vspace', 'newpage', 'hline',
+    'hspace', 'vspace', 'newpage', 'colbreak', 'special_spaces', 'hline',
     // Réglages fins
     'set_par', 'set_list',
     // Listes
@@ -23,7 +23,7 @@ function getFormatCommands() {
     // Tasks (paquet taskize)
     'tasks',
     // Blocs
-    'block', 'box', 'quote', 'figure', 'includegraphics',
+    'block', 'box', 'rect', 'contentblock', 'quote', 'figure', 'includegraphics',
     // Notes et réfs
     'footnote', 'label', 'ref',
     // Grid / Tableaux

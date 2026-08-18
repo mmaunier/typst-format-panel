@@ -10,14 +10,15 @@
     <button class="format-button underline" onclick="sendCommand('underline')">{{t.button.underline}}</button>
   </div>
   <div class="button-group">
-    <button class="format-button" onclick="sendCommand('strike')">{{t.button.strike}}</button>
-    <button class="format-button" onclick="sendCommand('highlight')">{{t.button.highlight}}</button>
-    <button class="format-button" onclick="sendCommand('code')"
+    <button class="format-button strike" onclick="sendCommand('strike')">{{t.button.strike}}</button>
+    <button class="format-button highlight" onclick="sendCommand('highlight')">{{t.button.highlight}}</button>
+    <button class="format-button mono" onclick="sendCommand('code')"
       oncontextmenu="showContextMenu(event, 'code'); return false;">{{t.button.code}}</button>
   </div>
   <div class="button-group">
     <button class="format-button" onclick="sendCommand('smallcaps')">{{t.button.smallcaps}}</button>
     <button class="format-button" onclick="sendCommand('cal')">{{t.button.cal}}</button>
+    <button class="format-button" onclick="sendCommand('scr')">{{t.button.scr}}</button>
   </div>
 
   <div class="separator"></div>
@@ -28,6 +29,15 @@
     <button class="transform-button uppercase" onclick="sendCommand('uppercase')">{{t.button.uppercase}}</button>
     <button class="transform-button lowercase" onclick="sendCommand('lowercase')">{{t.button.lowercase}}</button>
     <button class="transform-button capitalize" onclick="sendCommand('capitalize')">{{t.button.capitalize}}</button>
+    <button class="transform-button" onclick="sendCommand('hide')">{{t.button.hide}}</button>
+  </div>
+  <div class="button-group">
+    <button class="transform-button" onclick="sendCommand('super')">{{t.button.super}}</button>
+    <button class="transform-button" onclick="sendCommand('sub')">{{t.button.sub}}</button>
+    <button class="transform-button" onclick="sendCommand('skew')"
+      oncontextmenu="showContextMenu(event, 'skew'); return false;">{{t.button.skew}}</button>
+    <button class="transform-button" onclick="sendCommand('rotate')"
+      oncontextmenu="showContextMenu(event, 'rotate'); return false;">{{t.button.rotate}}</button>
   </div>
 
   <div class="separator"></div>
@@ -76,6 +86,13 @@
       </svg>
     </button>
   </div>
+  <div class="button-group">
+    <button class="format-button secondary" onclick="sendCommand('move')">{{t.button.move}}</button>
+    <button class="format-button secondary" onclick="sendCommand('place')"
+      oncontextmenu="showContextMenu(event, 'place'); return false;">{{t.button.place}}</button>
+    <button class="format-button secondary" onclick="sendCommand('pad')"
+      oncontextmenu="showContextMenu(event, 'pad'); return false;">{{t.button.pad}}</button>
+  </div>
 
   <h3>{{t.section.spacing}}</h3>
   <div class="button-group">
@@ -84,10 +101,11 @@
     <button class="format-button secondary" onclick="sendCommand('vspace')"
       oncontextmenu="showContextMenu(event, 'vspace'); return false;">{{t.button.vspace}}</button>
     <button class="format-button secondary" onclick="sendCommand('newpage')">{{t.button.pagebreak}}</button>
+    <button class="format-button secondary" onclick="sendCommand('colbreak')">{{t.button.colbreak}}</button>
   </div>
   <div class="button-group partial">
-    <button class="format-button" onclick="sendCommand('hline')"
-      oncontextmenu="showContextMenu(event, 'hline'); return false;">{{t.button.hline}}</button>
+    <button class="format-button" onclick="sendCommand('special_spaces')"
+      oncontextmenu="showContextMenu(event, 'special_spaces'); return false;">{{t.button.special_spaces}}</button>
   </div>
 
   <div class="separator"></div>
@@ -129,6 +147,11 @@
     <button class="format-button environment" onclick="sendCommand('quote')">{{t.button.quote}}</button>
   </div>
   <div class="button-group">
+    <button class="format-button environment" onclick="sendCommand('rect')"
+      oncontextmenu="showContextMenu(event, 'rect'); return false;">{{t.button.rect}}</button>
+    <button class="format-button environment" onclick="sendCommand('contentblock')">{{t.button.contentblock}}</button>
+  </div>
+  <div class="button-group">
     <button class="format-button environment-secondary" onclick="sendCommand('figure')">{{t.button.figure}}</button>
     <button class="format-button environment-secondary" onclick="sendCommand('includegraphics')">{{t.button.image}}</button>
   </div>
@@ -165,6 +188,8 @@
   <!-- ========== Spécial ========== -->
   <h3>{{t.section.special}}</h3>
   <div class="button-group">
+    <button class="format-button environment" onclick="sendCommand('hline')"
+      oncontextmenu="showContextMenu(event, 'hline'); return false;">{{t.button.hline}}</button>
     <button class="format-button environment" onclick="sendCommand('comment')">{{t.button.comment}}</button>
     <button class="format-button environment" onclick="sendCommand('uncomment')">{{t.button.uncomment}}</button>
   </div>

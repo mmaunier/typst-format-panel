@@ -41,21 +41,21 @@ const formatCommandVariants = {
     default: 'strike',
     variants: [
       { id: 'strike', label: '#strike[...]', descKey: 'variant.strike.strike',
-        textMode: '#strike[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+        textMode: '#strike[$1]$0', mathMode: 'strike($1)$0', supportsText: true, supportsMath: true }
     ]
   },
   highlight: {
     default: 'highlight',
     variants: [
       { id: 'highlight', label: '#highlight[...]', descKey: 'variant.highlight.highlight',
-        textMode: '#highlight[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+        textMode: '#highlight[$1]$0', mathMode: 'highlight($1)$0', supportsText: true, supportsMath: true }
     ]
   },
   smallcaps: {
     default: 'sc',
     variants: [
       { id: 'sc', label: '#smallcaps[...]', descKey: 'variant.smallcaps.sc',
-        textMode: '#smallcaps[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+        textMode: '#smallcaps[$1]$0', mathMode: 'smallcaps($1)$0', supportsText: true, supportsMath: true }
     ]
   },
   cal: {
@@ -63,6 +63,13 @@ const formatCommandVariants = {
     variants: [
       { id: 'cal', label: 'cal(...)', descKey: 'variant.cal.cal',
         textMode: '$cal($1)$$0', mathMode: 'cal($1)$0', supportsText: true, supportsMath: true }
+    ]
+  },
+  scr: {
+    default: 'scr',
+    variants: [
+      { id: 'scr', label: 'scr(...)', descKey: 'variant.scr.scr',
+        textMode: '$scr($1)$$0', mathMode: 'scr($1)$0', supportsText: true, supportsMath: true }
     ]
   },
 
@@ -108,6 +115,46 @@ const formatCommandVariants = {
     ]
   },
 
+  // ---- Transformations de mise en forme (layout) — v0.1.5 --------------------
+
+  super: {
+    default: 'super',
+    variants: [ { id: 'super', label: '#super[...]', descKey: 'variant.super.super',
+      textMode: '#super[$1]$0', mathMode: null, supportsText: true, supportsMath: false } ]
+  },
+  sub: {
+    default: 'sub',
+    variants: [ { id: 'sub', label: '#sub[...]', descKey: 'variant.sub.sub',
+      textMode: '#sub[$1]$0', mathMode: null, supportsText: true, supportsMath: false } ]
+  },
+  skew: {
+    default: 'left',
+    variants: [
+      { id: 'left',  label: '#skew(ax: -12deg)[...]', descKey: 'variant.skew.left',
+        textMode: '#skew(ax: -12deg)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'right', label: '#skew(ax: 12deg)[...]',  descKey: 'variant.skew.right',
+        textMode: '#skew(ax: 12deg)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
+  hide: {
+    default: 'hide',
+    variants: [ { id: 'hide', label: '#hide[...]', descKey: 'variant.hide.hide',
+      textMode: '#hide[$1]$0', mathMode: null, supportsText: true, supportsMath: false } ]
+  },
+  rotate: {
+    default: 'r90',
+    variants: [
+      { id: 'r90',  label: '#rotate(90deg)[...]',  descKey: 'variant.rotate.r90',
+        textMode: '#rotate(90deg)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'r45',  label: '#rotate(45deg)[...]',  descKey: 'variant.rotate.r45',
+        textMode: '#rotate(45deg)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'rm45', label: '#rotate(-45deg)[...]', descKey: 'variant.rotate.rm45',
+        textMode: '#rotate(-45deg)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'r180', label: '#rotate(180deg)[...]', descKey: 'variant.rotate.r180',
+        textMode: '#rotate(180deg)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
+
   // ---- Couleurs et tailles -------------------------------------------------
 
   color: {
@@ -126,18 +173,22 @@ const formatCommandVariants = {
     ]
   },
   fontsize: {
+    // Ordre = ordre d'affichage dans le menu contextuel. Le défaut (clic direct)
+    // doit être le 1er élément de ce tableau (cf. audit v0.1.5 : le clic direct
+    // doit toujours correspondre au 1er item du menu, comme pour tous les
+    // autres boutons à variantes). p12 est donc placé en tête.
     default: 'p12',
     variants: [
-      { id: 'p8',  label: '8pt',                       descKey: 'variant.fontsize.p8',
-        textMode: '#text(size: 8pt)[$1]$0',  mathMode: null, supportsText: true, supportsMath: false },
-      { id: 'p10', label: '10pt',                      descKey: 'variant.fontsize.p10',
-        textMode: '#text(size: 10pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
       { id: 'p12', labelKey: 'label.fontsize.p12',     descKey: 'variant.fontsize.p12',
-        textMode: '#text(size: 12pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+        textMode: '#text(size: 12pt)[$1]$0', mathMode: 'text(size: 12pt)[$1]$0', supportsText: true, supportsMath: true },
+      { id: 'p10', label: '10pt',                      descKey: 'variant.fontsize.p10',
+        textMode: '#text(size: 10pt)[$1]$0', mathMode: 'text(size: 10pt)[$1]$0', supportsText: true, supportsMath: true },
+      { id: 'p8',  label: '8pt',                       descKey: 'variant.fontsize.p8',
+        textMode: '#text(size: 8pt)[$1]$0',  mathMode: 'text(size: 8pt)[$1]$0',  supportsText: true, supportsMath: true },
       { id: 'p14', labelKey: 'label.fontsize.p14',     descKey: 'variant.fontsize.p14',
-        textMode: '#text(size: 14pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+        textMode: '#text(size: 14pt)[$1]$0', mathMode: 'text(size: 14pt)[$1]$0', supportsText: true, supportsMath: true },
       { id: 'p18', labelKey: 'label.fontsize.p18',     descKey: 'variant.fontsize.p18',
-        textMode: '#text(size: 18pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+        textMode: '#text(size: 18pt)[$1]$0', mathMode: 'text(size: 18pt)[$1]$0', supportsText: true, supportsMath: true }
     ]
   },
 
@@ -184,13 +235,44 @@ const formatCommandVariants = {
     variants: [ { id: 'align', label: '#align(right)[...]', descKey: 'variant.flushright.align',
       textMode: '#align(right)[$1]$0', mathMode: null, supportsText: true, supportsMath: false } ]
   },
+  move: {
+    default: 'move',
+    variants: [ { id: 'move', label: '#move(dx: ..., dy: ...)[...]', descKey: 'variant.move.move',
+      textMode: '#move(dx: 0pt, dy: 0pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false } ]
+  },
+  place: {
+    default: 'top-left',
+    variants: [
+      { id: 'top-left',     label: '#place(top + left)[...]',     descKey: 'variant.place.top-left',
+        textMode: '#place(top + left)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'top-right',    label: '#place(top + right)[...]',    descKey: 'variant.place.top-right',
+        textMode: '#place(top + right)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'bottom-left',  label: '#place(bottom + left)[...]',  descKey: 'variant.place.bottom-left',
+        textMode: '#place(bottom + left)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'bottom-right', label: '#place(bottom + right)[...]', descKey: 'variant.place.bottom-right',
+        textMode: '#place(bottom + right)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'center',       label: '#place(center + horizon)[...]', descKey: 'variant.place.center',
+        textMode: '#place(center + horizon)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
+  pad: {
+    default: 'rest',
+    variants: [
+      { id: 'rest', label: '#pad(rest: ...)[...]', descKey: 'variant.pad.rest',
+        textMode: '#pad(rest: 1em)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'x',    label: '#pad(x: ...)[...]',    descKey: 'variant.pad.x',
+        textMode: '#pad(x: 1em)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'y',    label: '#pad(y: ...)[...]',    descKey: 'variant.pad.y',
+        textMode: '#pad(y: 1em)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
 
   // ---- Espacement ----------------------------------------------------------
 
   hspace: {
     default: 'h',
     variants: [
-      { id: 'h',     label: '#h(1em)',         descKey: 'variant.hspace.h',
+      { id: 'h',     label: '#h(_em)',         descKey: 'variant.hspace.h',
         textMode: '#h($1em)$0', mathMode: null, supportsText: true, supportsMath: false },
       { id: 'quad',  label: '#h(1em) — quad',  descKey: 'variant.hspace.quad',
         textMode: '#h(1em)$0',  mathMode: null, supportsText: true, supportsMath: false },
@@ -203,7 +285,7 @@ const formatCommandVariants = {
   vspace: {
     default: 'v',
     variants: [
-      { id: 'v',         label: '#v(1em)',   descKey: 'variant.vspace.v',
+      { id: 'v',         label: '#v(_em)',   descKey: 'variant.vspace.v',
         textMode: '#v($1em)$0',  mathMode: null, supportsText: true, supportsMath: false },
       { id: 'smallskip', label: '#v(0.5em)', descKey: 'variant.vspace.smallskip',
         textMode: '#v(0.5em)$0', mathMode: null, supportsText: true, supportsMath: false },
@@ -220,6 +302,32 @@ const formatCommandVariants = {
     variants: [
       { id: 'pb', label: '#pagebreak()', descKey: 'variant.newpage.pb',
         textMode: '#pagebreak()$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
+  colbreak: {
+    default: 'cb',
+    variants: [
+      { id: 'cb', label: '#colbreak()', descKey: 'variant.colbreak.cb',
+        textMode: '#colbreak()$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
+  special_spaces: {
+    default: 'nbsp',
+    variants: [
+      { id: 'nbsp',        label: '~',                          descKey: 'variant.special_spaces.nbsp',
+        textMode: '~$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'nbsp_narrow', label: '#sym.space.nobreak.narrow',  descKey: 'variant.special_spaces.nbsp_narrow',
+        textMode: '#sym.space.nobreak.narrow$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'thin',        label: '#sym.space.thin',            descKey: 'variant.special_spaces.thin',
+        textMode: '#sym.space.thin$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'hair',        label: '#sym.space.hair',            descKey: 'variant.special_spaces.hair',
+        textMode: '#sym.space.hair$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'en',          label: '#sym.space.en',              descKey: 'variant.special_spaces.en',
+        textMode: '#sym.space.en$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'punct',       label: '#sym.space.punct',           descKey: 'variant.special_spaces.punct',
+        textMode: '#sym.space.punct$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'fig',         label: '#sym.space.fig',             descKey: 'variant.special_spaces.fig',
+        textMode: '#sym.space.fig$0', mathMode: null, supportsText: true, supportsMath: false }
     ]
   },
   hline: {
@@ -343,22 +451,40 @@ const formatCommandVariants = {
     default: 'plain',
     variants: [
       { id: 'plain',   label: '#block[...]',              descKey: 'variant.block.plain',
-        textMode: '#block[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+        textMode: '#block[$1]$0', mathMode: 'block($1)$0', supportsText: true, supportsMath: true },
       { id: 'framed',  label: '#block(stroke: 1pt)[...]', descKey: 'variant.block.framed',
-        textMode: '#block(stroke: 1pt, inset: 8pt, radius: 4pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+        textMode: '#block(stroke: 1pt, inset: 8pt, radius: 4pt)[$1]$0', mathMode: 'block(stroke: 1pt, inset: 8pt, radius: 4pt)[$1]$0', supportsText: true, supportsMath: true },
       { id: 'colored', label: '#block(fill: ...)[...]',   descKey: 'variant.block.colored',
-        textMode: '#block(fill: luma(230), inset: 8pt, radius: 4pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+        textMode: '#block(fill: luma(230), inset: 8pt, radius: 4pt)[$1]$0', mathMode: 'block(fill: luma(230), inset: 8pt, radius: 4pt)[$1]$0', supportsText: true, supportsMath: true }
     ]
   },
   box: {
     default: 'plain',
     variants: [
       { id: 'plain',  label: '#box[...]',              descKey: 'variant.box.plain',
-        textMode: '#box[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+        textMode: '#box[$1]$0', mathMode: 'box($1)$0', supportsText: true, supportsMath: true },
       { id: 'width',  label: '#box(width: 5cm)[...]',  descKey: 'variant.box.width',
-        textMode: '#box(width: 5cm)[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+        textMode: '#box(width: 5cm)[$1]$0', mathMode: 'box(width: 5cm)[$1]$0', supportsText: true, supportsMath: true },
       { id: 'framed', label: '#box(stroke: 0.5pt)[...]', descKey: 'variant.box.framed',
-        textMode: '#box(stroke: 0.5pt, inset: (x: 4pt, y: 2pt))[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+        textMode: '#box(stroke: 0.5pt, inset: (x: 4pt, y: 2pt))[$1]$0', mathMode: 'box(stroke: 0.5pt, inset: (x: 4pt, y: 2pt))[$1]$0', supportsText: true, supportsMath: true }
+    ]
+  },
+  rect: {
+    default: 'plain',
+    variants: [
+      { id: 'plain',   label: '#rect[...]',              descKey: 'variant.rect.plain',
+        textMode: '#rect[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'filled',  label: '#rect(fill: ...)[...]',   descKey: 'variant.rect.filled',
+        textMode: '#rect(fill: luma(230))[$1]$0', mathMode: null, supportsText: true, supportsMath: false },
+      { id: 'rounded', label: '#rect(radius: 4pt)[...]', descKey: 'variant.rect.rounded',
+        textMode: '#rect(radius: 4pt)[$1]$0', mathMode: null, supportsText: true, supportsMath: false }
+    ]
+  },
+  contentblock: {
+    default: 'plain',
+    variants: [
+      { id: 'plain', label: '#[ ... ]', descKey: 'variant.contentblock.plain',
+        textMode: '#[\n  $1\n]$0', mathMode: null, supportsText: true, supportsMath: false }
     ]
   },
   quote: {

@@ -60,7 +60,7 @@ body {
 
 h3 {
    margin-top: 0;
-   margin-bottom: 8px;
+   margin-bottom: 4px;
    color: var(--vscode-foreground);
    font-size: 14px;
    font-weight: bold;
@@ -69,8 +69,8 @@ h3 {
 .button-group {
    display: flex;
    flex-wrap: wrap;
-   gap: 3px;
-   margin-bottom: 8px;
+   gap: 1.5px;
+   margin-bottom: 4px;
 }
 
 .format-button {
@@ -298,12 +298,20 @@ h3 {
 }
 
 .format-button.highlight {
-   background-color: yellow;
+   background-color: #eaff00;
    color: black;
 }
 
 .format-button.highlight:hover {
-   background-color: #ffff66;
+   background-color: #f5ff66;
+}
+
+.format-button.strike {
+   text-decoration: line-through;
+}
+
+.format-button.mono {
+   font-family: var(--vscode-editor-font-family), monospace;
 }
 
 .format-button.emphasis {

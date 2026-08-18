@@ -58,6 +58,17 @@
 
   <div class="separator"></div>
 
+  <h3>{{t.section.math_spacing}}</h3>
+  <div class="button-group">
+    <button class="math-button secondary" onclick="sendCommand('mthin')">{{t.button.mthin}}</button>
+    <button class="math-button" onclick="sendCommand('math_spaces')"
+      oncontextmenu="showContextMenu(event, 'math_spaces'); return false;">{{t.button.math_spaces}}</button>
+    <button class="math-button" onclick="sendCommand('stretch')"
+      oncontextmenu="showContextMenu(event, 'stretch'); return false;">{{t.button.stretch}}</button>
+  </div>
+
+  <div class="separator"></div>
+
   <h3>{{t.section.math_funcs}}</h3>
   <div class="button-group">
     <button class="math-button" onclick="sendCommand('sin')">sin</button>
@@ -65,6 +76,10 @@
     <button class="math-button" onclick="sendCommand('tan')">tan</button>
     <button class="math-button" onclick="sendCommand('ln')">ln</button>
     <button class="math-button" onclick="sendCommand('exp')">exp</button>
+  </div>
+  <div class="button-group">
+    <button class="math-button" onclick="sendCommand('num')"
+      oncontextmenu="showContextMenu(event, 'num'); return false;">{{t.button.num}}</button>
   </div>
 
   <div class="separator"></div>
@@ -81,8 +96,6 @@
     <button class="math-button" onclick="sendCommand('matrix')"
       oncontextmenu="showMatrixModal(event); return false;">{{t.button.matrix}}</button>
     <button class="math-button" onclick="sendCommand('array')">{{t.button.array}}</button>
-    <button class="math-button" onclick="sendCommand('math_spaces')"
-      oncontextmenu="showContextMenu(event, 'math_spaces'); return false;">{{t.button.math_spaces}}</button>
   </div>
 
   <div class="separator"></div>
@@ -103,11 +116,13 @@
   <div class="button-group">
     <button class="math-button secondary" onclick="sendCommand('in')"
       oncontextmenu="showContextMenu(event, 'in'); return false;">∈</button>
-    <button class="math-button secondary" onclick="sendCommand('subset')">⊂</button>
+    <button class="math-button secondary" onclick="sendCommand('subset')"
+      oncontextmenu="showContextMenu(event, 'subset'); return false;">⊂</button>
     <button class="math-button secondary" onclick="sendCommand('cup')">∪</button>
     <button class="math-button secondary" onclick="sendCommand('cap')">∩</button>
     <button class="math-button secondary" onclick="sendCommand('forall')">∀</button>
-    <button class="math-button secondary" onclick="sendCommand('exists')">∃</button>
+    <button class="math-button secondary" onclick="sendCommand('exists')"
+      oncontextmenu="showContextMenu(event, 'exists'); return false;">∃</button>
   </div>
   <div class="button-group">
     <button class="math-button secondary" onclick="sendCommand('cdot')">·</button>
@@ -120,16 +135,17 @@
 
   <div class="separator"></div>
 
-  <h3>{{t.section.math_dec}}</h3>
+  <h3>{{t.section.math_styles}}</h3>
   <div class="button-group">
-    <button class="math-button" onclick="sendCommand('vec')"
-      oncontextmenu="showContextMenu(event, 'vec'); return false;">
+    <button class="math-button" onclick="sendCommand('vecarrow')"
+      oncontextmenu="showContextMenu(event, 'vecarrow'); return false;">
       <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor">
         <path d="M3 4 L13 4 M11 2 L13 4 L11 6" stroke="currentColor" fill="none" stroke-width="1.2"/>
         <text x="8" y="14" font-size="9" text-anchor="middle" fill="currentColor" font-style="italic">u</text>
       </svg>
     </button>
-    <button class="math-button" onclick="sendCommand('widehat')">
+    <button class="math-button" onclick="sendCommand('widehat')"
+      oncontextmenu="showContextMenu(event, 'widehat'); return false;">
       <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor">
         <path d="M4 5 Q8 2 12 5" stroke="currentColor" fill="none" stroke-width="1.2"/>
         <text x="8" y="14" font-size="9" text-anchor="middle" fill="currentColor" font-style="italic">A</text>
@@ -147,6 +163,23 @@
         <text x="10" y="13" font-size="9" text-anchor="middle" fill="currentColor" font-style="italic">T</text>
       </svg>
     </button>
+  </div>
+  <div class="button-group">
+    <button class="math-button" onclick="sendCommand('vec')"
+      oncontextmenu="showContextMenu(event, 'vec'); return false;">{{t.button.vec}}</button>
+    <button class="math-button" onclick="sendCommand('op')">{{t.button.op}}</button>
+    <button class="math-button" onclick="sendCommand('accent')"
+      oncontextmenu="showContextMenu(event, 'accent'); return false;">{{t.button.accent}}</button>
+    <button class="math-button" onclick="sendCommand('attach')"
+      oncontextmenu="showContextMenu(event, 'attach'); return false;">{{t.button.attach}}</button>
+  </div>
+  <div class="button-group">
+    <button class="math-button" onclick="sendCommand('cancel')"
+      oncontextmenu="showContextMenu(event, 'cancel'); return false;">{{t.button.cancel}}</button>
+    <button class="math-button" onclick="sendCommand('underbrace')"
+      oncontextmenu="showContextMenu(event, 'underbrace'); return false;">{{t.button.underbrace}}</button>
+    <button class="math-button" onclick="sendCommand('overbrace')"
+      oncontextmenu="showContextMenu(event, 'overbrace'); return false;">{{t.button.overbrace}}</button>
   </div>
 
   <div class="separator"></div>

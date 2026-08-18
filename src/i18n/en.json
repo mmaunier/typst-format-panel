@@ -22,11 +22,12 @@
     "math_frac": "Fractions and roots",
     "math_compare": "Comparisons and arrows",
     "math_arrows_other": "Other arrows",
+    "math_spacing": "Spacing",
     "math_funcs": "Functions",
     "math_delim": "Delimiters and matrices",
     "math_sets": "Sets",
     "math_logic": "Logic and symbols",
-    "math_dec": "Decorations",
+    "math_styles": "Styles and annotations",
     "math_env": "Math environments"
   },
 
@@ -63,8 +64,20 @@
     "figure": "figure",
     "image": "image",
     "footnote": "footnote",
-    "label": "<label>",
+    "label": "<>",
     "ref": "@ref",
+    "super": "super",
+    "sub": "sub",
+    "skew": "skew",
+    "hide": "hide",
+    "rotate": "rotate",
+    "rect": "rect",
+    "contentblock": "#[ ]",
+    "colbreak": "colbreak",
+    "move": "move",
+    "place": "place",
+    "pad": "pad",
+    "special_spaces": "⎵ spaces",
     "grid2": "#grid 2col",
     "grid3": "#grid 3col",
     "grid_modal": "#grid …",
@@ -75,13 +88,24 @@
     "uncomment": "Uncomment",
     "arrows_special": "⇝ other arrows",
     "math_spaces": "⎵ math spaces",
+    "mthin": "thin",
+    "stretch": "stretch(...)",
     "matrix": "mat",
     "array": "array",
+    "vec": "vec(...)",
+    "op": "op(...)",
+    "accent": "accent",
+    "attach": "attach",
+    "cancel": "cancel",
+    "underbrace": "under{ }",
+    "overbrace": "over{ }",
+    "num": "num(...)",
     "inline_math": "$…$",
     "display_math": "$ … $",
     "display": "display()",
     "align_math": "= & align",
-    "cases": "cases"
+    "cases": "cases",
+    "scr": "𝓈𝒸𝓇"
   },
 
   "menu": {
@@ -157,6 +181,7 @@
     "highlight": { "highlight": "Yellow highlight" },
     "smallcaps": { "sc": "Small capitals" },
     "cal": { "cal": "Calligraphy — auto wrap in $…$ in text mode" },
+    "scr": { "scr": "Script (roundhand) — auto wrap in $…$ in text mode" },
 
     "code": {
       "inline": "Inline code",
@@ -278,6 +303,49 @@
     "label": { "lbl": "Label" },
     "ref": { "r": "Reference to a label" },
 
+    "super": { "super": "Text superscript" },
+    "sub": { "sub": "Text subscript" },
+    "skew": {
+      "left":  "Skew left (fake italic effect)",
+      "right": "Skew right"
+    },
+    "hide": { "hide": "Hide content (keeps its layout space)" },
+    "rotate": {
+      "r90":  "Rotate 90°",
+      "r45":  "Rotate 45°",
+      "rm45": "Rotate -45°",
+      "r180": "Rotate 180°"
+    },
+    "rect": {
+      "plain":   "Simple rectangle",
+      "filled":  "Filled rectangle",
+      "rounded": "Rounded corners"
+    },
+    "contentblock": { "plain": "Generic content block (e.g. to scope #set rules)" },
+    "colbreak": { "cb": "Column break" },
+    "move": { "move": "Move content visually, without affecting layout (dx, dy)" },
+    "place": {
+      "top-left":     "Place top-left",
+      "top-right":    "Place top-right",
+      "bottom-left":  "Place bottom-left",
+      "bottom-right": "Place bottom-right",
+      "center":       "Place centered"
+    },
+    "pad": {
+      "rest": "Padding on all sides",
+      "x":    "Horizontal padding",
+      "y":    "Vertical padding"
+    },
+    "special_spaces": {
+      "nbsp":        "Non-breaking space (~ shorthand)",
+      "nbsp_narrow": "Narrow non-breaking space",
+      "thin":        "Thin space",
+      "hair":        "Hair space",
+      "en":          "En space",
+      "punct":       "Punctuation space",
+      "fig":         "Figure space (tabular digits)"
+    },
+
     "grid2": { "g2": "Layout: 2 equal columns" },
     "grid3": { "g3": "Layout: 3 equal columns" },
     "typst_grid": { "modal": "Open the grid assistant" },
@@ -353,11 +421,14 @@
       "cdots": "Centered horizontal ellipsis",
       "vdots": "Vertical ellipsis"
     },
-    "vec": {
-      "plain": "Arrow above (vector)",
-      "over":  "Bar above"
+    "subset": {
+      "plain": "Subset",
+      "not": "Not a subset"
     },
-
+    "exists": {
+      "plain": "There exists",
+      "not": "There does not exist"
+    },
     "inline_math":  { "plain": "Inline math" },
     "display_math": { "plain": "Display math (with surrounding spaces)" },
     "display":      { "plain": "Force display style" },
@@ -372,7 +443,70 @@
       "custom":  "Matrix assistant…"
     },
 
-    "align_math": { "plain": "Aligned math block (uses & and \\ inside $ … $)" }
+    "align_math": { "plain": "Aligned math block (uses & and \\ inside $ … $)" },
+
+    "vecarrow": {
+      "plain": "Arrow above (vector)",
+      "over":  "Bar above"
+    },
+    "widehat": {
+      "hat":       "Hat accent (fixed width)",
+      "overparen": "Stretchy arc above (e.g. geometric arcs)"
+    },
+    "vec": {
+      "paren":   "Column vector, parentheses (default)",
+      "bracket": "Column vector, brackets",
+      "brace":   "Column vector, braces",
+      "bar":     "Column vector, bars",
+      "none":    "Column vector, no delimiter"
+    },
+    "op": { "plain": "Custom operator with proper spacing (e.g. argmax)" },
+    "accent": {
+      "tilde":  "Tilde accent",
+      "dot":    "Dot accent",
+      "diaer":  "Double-dot accent (diaeresis)",
+      "breve":  "Breve accent",
+      "grave":  "Grave accent",
+      "acute":  "Acute accent",
+      "caron":  "Caron accent",
+      "circle": "Circle accent (ring)",
+      "macron": "Macron accent (bar)"
+    },
+    "attach": {
+      "tl": "Top-left attachment",
+      "tr": "Top-right attachment",
+      "bl": "Bottom-left attachment",
+      "br": "Bottom-right attachment"
+    },
+    "cancel": {
+      "plain": "Diagonal cancel line",
+      "cross": "Cross-out (X) cancel"
+    },
+    "underbrace": {
+      "brace":   "Brace below (default)",
+      "line":    "Line below",
+      "bracket": "Bracket below",
+      "paren":   "Stretchy arc below",
+      "shell":   "Shell bracket below"
+    },
+    "overbrace": {
+      "brace":   "Brace above (default)",
+      "line":    "Line above",
+      "bracket": "Bracket above",
+      "paren":   "Stretchy arc above",
+      "shell":   "Shell bracket above"
+    },
+    "mthin": { "thin": "Thin space (quick access)" },
+    "stretch": {
+      "plain": "Stretch glyph to fit content width",
+      "sized": "Stretch to a custom size (150%)"
+    },
+    "num": {
+      "plain":  "Format number (zero package)",
+      "round2": "Round to 2 decimal places",
+      "round0": "Round to the nearest integer",
+      "import": "Place at the top of the document"
+    }
   },
 
   "label": {
@@ -453,6 +587,9 @@
     },
     "matrix": {
       "custom": "Matrix assistant…"
+    },
+    "mthin": {
+      "thin": "thin (≈ 1/6 em)"
     }
   }
 }
